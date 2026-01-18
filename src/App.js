@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Home from "./components/Home";
+import AggregateCalculator from "./components/AggregateCal";
+import GPACalculator from "./components/GPAcal";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CGPACalculator from "./components/CGPAcal";
+import TimetableGenerator from "./components/TimeTable";
+import FrontPages from "./components/FrontPages";
+import GenerateFP from "./components/GenerateFP";
+import FacultiesDepartments from "./components/FacAndDept";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route
+            exact
+            path="/AggregateCalculator"
+            element={<AggregateCalculator />}
+          />
+          <Route exact path="/GPAcalculator" element={<GPACalculator />} />
+          <Route exact path="/CGPACalculator" element={<CGPACalculator />} />
+          <Route exact path="/TimeTable" element={<TimetableGenerator />} />
+          <Route exact path="/FrontPages" element={<FrontPages />} />
+          <Route exact path="/FrontPages" element={<FrontPages />} />
+          <Route exact path="/design/:id" element={<GenerateFP />} />
+          <Route exact path="/FacultiesDepartments" element={<FacultiesDepartments />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
