@@ -17,6 +17,12 @@ const Home = () => {
         </p>
       </header>
 
+      {/* credential buttons */}
+
+      <button className="card-action-btn" id="createAccount">
+        Create Account <i className="ri-arrow-right-line"></i>
+      </button>
+
       {/* Main Content */}
       <main className="home-main-container">
         {/* Aggregate Calculator */}

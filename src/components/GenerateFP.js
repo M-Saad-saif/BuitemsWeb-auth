@@ -33,7 +33,7 @@ const GenerateFP = () => {
 
   const backgroundImage = backgroundImages[designNumber];
 
-  //   ettin gpositions of text
+  //   setting positions of text
   const getTextPositions = (designNum) => {
     const positions = {
       1: {

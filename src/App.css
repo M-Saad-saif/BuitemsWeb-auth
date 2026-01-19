@@ -17,7 +17,8 @@ body {
 .agg-container::before,
 .gpa-container::before,
 .Cgpa-container::before,
-#timetable-body::before {
+#timetable-body::before,
+.home-container::before {
   content: "";
   position: fixed;
   top: 0;
@@ -31,25 +32,25 @@ body {
   opacity: 0.9;
 }
 
+.container::after,
+.agg-container::after,
+.gpa-container::after,
+.Cgpa-container::after,
+#timetable-body::after,
+.home-container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgb(8 50 98 / 69%) 0%, rgb(10 77 161 / 54%) 100%);
+  z-index: -1;
+}
+
 /* ===========================================
 HOme section
    =========================================== */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Home Container */
 .home-container {
@@ -85,7 +86,7 @@ HOme section
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(8, 50, 98, 0.85) 0%, rgba(10, 77, 161, 0.8) 100%);
+  background: linear-gradient(135deg, rgb(8 50 98 / 69%) 0%, rgb(10 77 161 / 54%) 100%);
   z-index: -1;
 }
 
@@ -105,6 +106,7 @@ HOme section
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
   color: #ffd700;
+  margin-top: 6rem;
 }
 
 .home-subtitle {
@@ -166,10 +168,6 @@ HOme section
   margin-bottom: 20px;
   display: inline-block;
   transition: transform 0.3s ease;
-}
-
-.feature-card:hover .card-icon {
-  transform: scale(1.2) rotate(5deg);
 }
 
 /* Icon Colors */
@@ -514,33 +512,57 @@ HOme section
   border-radius: 12px;
   box-shadow: 9px 13px 20px;
   position: relative;
+  margin: 8% auto;
+  margin-bottom: 7%;
 }
 
 /* Container Sizes */
 .agg-container {
-  margin: 2% auto;
+  /* margin: 2% auto; */
   width: 30%;
   min-width: 400px;
   height: 109vh;
 }
 
 .gpa-container {
-  margin: 4% auto;
+  /* margin: 4% auto; */
   width: 30%;
   min-width: 400px;
   padding: 20px;
 }
 
 .Cgpa-container {
-  position: absolute;
-  margin: 4% 35%;
+  /* position: absolute; */
+  margin: 8% auto;
+  /* margin-bottom: 12%; */
   gap: 11px;
+  width: 36%;
 }
 
 #timetable-container {
-  margin-top: 3%;
+  /* margin-top: 3%; */
   width: 36%;
   justify-self: anchor-center;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.agg-container>*,
+.agg-container>*,
+.gpa-container>*,
+.Cgpa-container>*,
+#timetable-container {
+  animation: fadeInUp 0.5s ease forwards;
 }
 
 /* ===========================================
@@ -1196,6 +1218,7 @@ table {
 .design-container,
 .generate-fp-container {
   padding: 20px;
+  height: 219vh;
 }
 
 /* Front Pages Container */
@@ -1278,7 +1301,7 @@ table {
 .fp-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
-  padding: 25px;
+  padding: 12px 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   border: 1px solid rgba(8, 50, 98, 0.1);
@@ -2064,4 +2087,15 @@ table {
 .mslmbgh>*,
 .zhob>* {
   animation: fadeInUp 0.5s ease forwards;
+}
+
+/* ===========================================
+   Navbar style
+   =========================================== */
+
+.navbar {
+  position: fixed;
+  z-index: 60;
+  width: 100%;
+  top: 0;
 }

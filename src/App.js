@@ -1,19 +1,42 @@
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import AggregateCalculator from "./components/AggregateCal";
 import GPACalculator from "./components/GPAcal";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CGPACalculator from "./components/CGPAcal";
 import TimetableGenerator from "./components/TimeTable";
 import FrontPages from "./components/FrontPages";
 import GenerateFP from "./components/GenerateFP";
 import FacultiesDepartments from "./components/FacAndDept";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+
 function App() {
+  
+  const ScrollUP = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+      // eslint-disable-next-line
+    }, [pathname]);
+    return null;
+  };
+
   return (
     <>
       <Router>
+        <ScrollUP />
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/about" element={<About />} />
           <Route
             exact
             path="/AggregateCalculator"
@@ -23,9 +46,12 @@ function App() {
           <Route exact path="/CGPACalculator" element={<CGPACalculator />} />
           <Route exact path="/TimeTable" element={<TimetableGenerator />} />
           <Route exact path="/FrontPages" element={<FrontPages />} />
-          <Route exact path="/FrontPages" element={<FrontPages />} />
           <Route exact path="/design/:id" element={<GenerateFP />} />
-          <Route exact path="/FacultiesDepartments" element={<FacultiesDepartments />} />
+          <Route
+            exact
+            path="/FacultiesDepartments"
+            element={<FacultiesDepartments />}
+          />
         </Routes>
       </Router>
     </>

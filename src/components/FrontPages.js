@@ -9,21 +9,6 @@ export default function FrontPages() {
   return (
     <>
       <div className="fp-body">
-        <header id="header">
-          <div className="header-content">
-            <Link to="/">
-              <button className="home-btn">
-                <i className="ri-home-2-fill"></i>
-                <span>Home</span>
-              </button>
-            </Link>
-            <h1 className="page-title">
-              Select any design you like
-              <i className="ri-arrow-drop-down-fill"></i>
-            </h1>
-          </div>
-        </header>
-
         <div className="fp-container" id="genfp-body">
           <div className="fp-grid">
             <div className="fp-card">
@@ -93,7 +78,7 @@ export default function FrontPages() {
                 <i className="ri-corner-right-up-fill"></i>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
 
         <div className="fp-footer">

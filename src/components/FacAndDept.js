@@ -1,26 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./FacultiesDept.css";
 
 const FacultiesDept = () => {
   return (
     <div id="facu-and-eng-body">
-      <section className="header">
-        <div className="header-container">
-          <Link to="/">
-            <button className="button" data-text="Awesome">
-              <span className="actual-text">
-                &nbsp;Home<i className="ri-home-2-fill"></i>&nbsp;
-              </span>
-            </button>
-          </Link>
-        </div>
-      </section>
-
       <section className="propectus-portion">
         {/* Basic Sciences */}
         <div className="portion">
-          <h1 className="pp_headings">_____Basics Sciences___<i class="ri-brain-line"></i></h1>
+          <h1 className="pp_headings">
+            _____Basics Sciences___<i class="ri-brain-line"></i>
+          </h1>
           <div className="basic-science">
             <Link
               to="https://www.buitms.edu.pk/Chemistry"
@@ -98,7 +87,8 @@ const FacultiesDept = () => {
         {/* Engineering and Architecture */}
         <div className="portion">
           <h1 className="pp_headings" id="engineer-archi-portion">
-            _____Engineering and Architechure____<i class="fa-solid fa-sitemap"></i>
+            _____Engineering and Architechure____
+            <i class="fa-solid fa-sitemap"></i>
           </h1>
           <div className="eng-arch">
             <div className="div15">
@@ -298,7 +288,8 @@ const FacultiesDept = () => {
         {/* Faculty of Information & Communication Technology */}
         <div className="portion">
           <h1 className="pp_headings" id="fict-portion">
-            _____Faculty of Information & Communication Technology___<i class="fa-solid fa-code"></i>
+            _____Faculty of Information & Communication Technology___
+            <i class="fa-solid fa-code"></i>
           </h1>
           <div className="fict">
             <div className="div23">
@@ -474,7 +465,8 @@ const FacultiesDept = () => {
         {/* Faculty of Life Sciences & Informatics */}
         <div className="portion">
           <h1 className="pp_headings" id="flsi-portion">
-            _____Faculty of Life Sciences & Informatics___<i class="fa-solid fa-heart-pulse"></i>
+            _____Faculty of Life Sciences & Informatics___
+            <i class="fa-solid fa-heart-pulse"></i>
           </h1>
           <div className="flsi">
             <div className="div30">
@@ -554,7 +546,8 @@ const FacultiesDept = () => {
         {/* Faculty of Management Sciences */}
         <div className="portion">
           <h1 className="pp_headings" id="fms-portion">
-            _____Faculty of Management Sciences___<i class="fa-solid fa-bars-progress"></i>
+            _____Faculty of Management Sciences___
+            <i class="fa-solid fa-bars-progress"></i>
           </h1>
           <div className="fms">
             <div className="div33">
