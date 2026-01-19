@@ -16,9 +16,10 @@ import GenerateFP from "./components/GenerateFP";
 import FacultiesDepartments from "./components/FacAndDept";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
-  
   const ScrollUP = () => {
     const { pathname } = useLocation();
 
@@ -37,6 +38,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<About />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
           <Route
             exact
             path="/AggregateCalculator"

@@ -18,10 +18,26 @@ const Home = () => {
       </header>
 
       {/* credential buttons */}
+      <div className="credential-card">
+        <p style={{ fontSize: "19px", fontWeight: " 700" }}>
+          Create Account to have personal portal
+        </p>
+        <div className="credentialBTNs">
+          <Link to="/Signup">
+            <button className="credentialBTN">
+              {" "}
+              Create Account <i className="ri-user-add-line"></i>
+            </button>
+          </Link>
 
-      <button className="card-action-btn" id="createAccount">
-        Create Account <i className="ri-arrow-right-line"></i>
-      </button>
+          <Link to="/login">
+            <button className="credentialBTN">
+              {" "}
+              Login <i className="ri-login-box-line"></i>
+            </button>
+          </Link>
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="home-main-container">
