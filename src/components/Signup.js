@@ -5,13 +5,13 @@ import buitemsLogo from "./images/buitems logo.png";
 export default function Signup() {
   return (
     <>
-      <div class="split-form">
-        <div class="image-side">
+      <div className="split-form">
+        <div className="image-side">
           <img src={buitemsLogo} alt="" />
           <h2>Welcome!</h2>
           <p>Enter your details and make your portal</p>
         </div>
-        <div class="form-side">
+        <div className="form-side">
           <h2
             style={{ color: "#2157e0", fontWeight: "700", textAlign: "center" }}
           >

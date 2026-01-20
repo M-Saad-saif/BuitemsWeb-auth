@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import './Home.css';
 
 const Home = () => {
-  // Create particle effect
-
   return (
     <div className="home-container">
       {/* Header */}
@@ -18,24 +15,46 @@ const Home = () => {
       </header>
 
       {/* credential buttons */}
-      <div className="credential-card">
-        <p style={{ fontSize: "19px", fontWeight: " 700" }}>
-          Create Account to have personal portal
-        </p>
-        <div className="credentialBTNs">
-          <Link to="/Signup">
-            <button className="credentialBTN">
-              {" "}
-              Create Account <i className="ri-user-add-line"></i>
-            </button>
-          </Link>
+      <div className="buttons">
+        <div className="credential-card">
+          <div className="credentialBTNs">
+            <p
+              style={{ fontSize: "21px", fontWeight: " 700", color: "#083262" }}
+            >
+              Create Account to have personal portal
+            </p>
+            <div className="buttons">
+              <Link to="/Signup">
+                <button className="credentialBTN ">
+                  Create Account <i className="ri-user-add-line"></i>
+                </button>
+              </Link>
 
-          <Link to="/login">
-            <button className="credentialBTN">
-              {" "}
-              Login <i className="ri-login-box-line"></i>
-            </button>
-          </Link>
+              <Link to="/login">
+                <button className="credentialBTN  mx-2">
+                  Login <i className="ri-login-box-line"></i>
+                </button>
+              </Link>
+            </div>
+          </div>
+
+      <div style={{
+          width: "2px",
+          height: "100px",
+          backgroundColor: "#083262",
+          borderRadius: "1px"
+        }}></div>
+
+          <div style={{ gap: "9px", display: "grid" }}>
+            <p
+              style={{ fontSize: "21px", fontWeight: " 700", color: "#083262" }}
+            >
+              Student Protal
+            </p>
+            <Link to="/portal">
+              <button className="credentialBTN">Portal <i class="fa-solid fa-graduation-cap"></i></button>
+            </Link>
+          </div>
         </div>
       </div>
 

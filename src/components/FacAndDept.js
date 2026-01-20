@@ -6,11 +6,11 @@ const FacultiesDept = () => {
     <div id="facu-and-eng-body">
       <section className="propectus-portion">
         {/* Basic Sciences */}
-        <div className="portion">
+        <div className="portion" style={{marginTop: "5rem"}}>
           <h1 className="pp_headings">
             _____Basics Sciences___<i class="ri-brain-line"></i>
           </h1>
-          <div className="basic-science">
+          <div className="basic-science" >
             <Link
               to="https://www.buitms.edu.pk/Chemistry"
               id="bs-chemistrys"

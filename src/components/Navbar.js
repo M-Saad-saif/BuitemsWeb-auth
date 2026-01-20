@@ -1,13 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+
 
 export default function Navbar() {
+  const location = useLocation()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      {/* Desktop Navbar */}
+      <nav className="navbar navbar-expand-lg d-none d-lg-block">
         <div className="container-fluid">
+          
           <Link className="navbar-brand" to="/">
-            Navbar
+            BUITEMS
           </Link>
           <button
             className="navbar-toggler"
@@ -21,14 +35,14 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link className={`nav-link ${location.pathname === '/' ? "active": ""}`} aria-current="page" to="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">
+                <Link className={`nav-link ${location.pathname === '/about' ? "active": ""}`} to="/about">
                   About
                 </Link>
               </li>
@@ -97,9 +111,154 @@ export default function Navbar() {
                 </ul>
               </li>
             </ul>
+            <Link to="https://github.com/M-Saad-saif" target="_blank">
+              <button>GitHub</button>
+            </Link>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Navbar */}
+      <div className="d-lg-none">
+        {/* Mobile Header */}
+        <div className="mobile-nav-header">
+          <div className="mobile-nav-brand">
+            <Link to="/" onClick={closeMobileMenu}>
+              Navbar
+            </Link>
+          </div>
+          <button
+            className="mobile-menu-toggle"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMobileMenuOpen ? (
+              <i className="ri-close-line"></i>
+            ) : (
+              <i className="ri-menu-line"></i>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`mobile-menu-overlay ${isMobileMenuOpen ? "active" : ""}`}
+          onClick={toggleMobileMenu}
+        ></div>
+
+        {/* Mobile Menu Sidebar */}
+        <div
+          className={`mobile-menu-sidebar ${isMobileMenuOpen ? "active" : ""}`}
+        >
+          <div className="mobile-menu-header">
+            <h3>Menu</h3>
+            <button
+              className="mobile-menu-close"
+              onClick={toggleMobileMenu}
+              aria-label="Close menu"
+            >
+              <i className="ri-close-line"></i>
+            </button>
+          </div>
+
+          <div className="mobile-menu-content">
+            <ul className="mobile-nav-list">
+              <li className="mobile-nav-item">
+                <Link
+                  className="mobile-nav-link active"
+                  to="/"
+                  onClick={closeMobileMenu}
+                >
+                  <i className="ri-home-line"></i>
+                  Home
+                </Link>
+              </li>
+
+              <li className="mobile-nav-item">
+                <Link
+                  className="mobile-nav-link"
+                  to="/about"
+                  onClick={closeMobileMenu}
+                >
+                  <i className="ri-information-line"></i>
+                  About
+                </Link>
+              </li>
+
+              <li className="mobile-nav-item mobile-nav-dropdown">
+                <div className="mobile-nav-dropdown-header">
+                  <i className="ri-tools-line"></i>
+                  <span>Tools</span>
+                  <i className="ri-arrow-down-s-line dropdown-arrow"></i>
+                </div>
+                <ul className="mobile-nav-dropdown-menu">
+                  <li>
+                    <Link
+                      className="mobile-dropdown-item"
+                      to="/AggregateCalculator"
+                      onClick={closeMobileMenu}
+                    >
+                      <i className="ri-calculator-line"></i>
+                      Aggregate Calculator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="mobile-dropdown-item"
+                      to="/GPAcalculator"
+                      onClick={closeMobileMenu}
+                    >
+                      <i className="ri-calculator-line"></i>
+                      GPA Calculator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="mobile-dropdown-item"
+                      to="/CGPACalculator"
+                      onClick={closeMobileMenu}
+                    >
+                      <i className="ri-calculator-line"></i>
+                      CGPA Calculator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="mobile-dropdown-item"
+                      to="/TimeTable"
+                      onClick={closeMobileMenu}
+                    >
+                      <i className="ri-calendar-line"></i>
+                      Timetable Generator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="mobile-dropdown-item"
+                      to="/FrontPages"
+                      onClick={closeMobileMenu}
+                    >
+                      <i className="ri-file-line"></i>
+                      Front Pages
+                    </Link>
+                  </li>
+                  <li className="mobile-dropdown-divider"></li>
+                  <li>
+                    <Link
+                      className="mobile-dropdown-item"
+                      to="/FacultiesDepartments"
+                      onClick={closeMobileMenu}
+                    >
+                      <i className="ri-building-line"></i>
+                      Faculties & Departments
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
