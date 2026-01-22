@@ -38,12 +38,14 @@ const Home = () => {
             </div>
           </div>
 
-      <div style={{
-          width: "2px",
-          height: "100px",
-          backgroundColor: "#083262",
-          borderRadius: "1px"
-        }}></div>
+          <div
+            style={{
+              width: "2px",
+              height: "100px",
+              backgroundColor: "#083262",
+              borderRadius: "1px",
+            }}
+          ></div>
 
           <div style={{ gap: "9px", display: "grid" }}>
             <p
@@ -52,7 +54,9 @@ const Home = () => {
               Student Protal
             </p>
             <Link to="/portal">
-              <button className="credentialBTN">Portal <i className="fa-solid fa-graduation-cap"></i></button>
+              <button className="credentialBTN">
+                Portal <i className="fa-solid fa-graduation-cap"></i>
+              </button>
             </Link>
           </div>
         </div>
@@ -62,8 +66,18 @@ const Home = () => {
       <main className="home-main-container">
         {/* Aggregate Calculator */}
         <div className="feature-card">
-          <i className="ri-calculator-line card-icon"></i>
-          <h3 className="card-title">Aggregate Calculator</h3>
+          <div
+            className="iconHeading-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <i className="ri-calculator-line home-card-icon"></i>
+            <h3 className="card-title">Aggregate Calculator</h3>
+          </div>
           <p className="card-description">
             Calculate your admission aggregate based on matric, FSC, and NTS
             marks. Get accurate results instantly.
@@ -77,8 +91,18 @@ const Home = () => {
 
         {/* GPA Calculator */}
         <div className="feature-card">
-          <i className="ri-line-chart-line card-icon"></i>
-          <h3 className="card-title">GPA Calculator</h3>
+          <div
+            className="iconHeading-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <i className="ri-line-chart-line home-card-icon"></i>
+            <h3 className="card-title">GPA Calculator</h3>
+          </div>
           <p className="card-description">
             Calculate your semester GPA with our easy-to-use calculator.
             Supports multiple courses and credit hours.
@@ -92,8 +116,18 @@ const Home = () => {
 
         {/* CGPA Calculator */}
         <div className="feature-card">
-          <i className="ri-bar-chart-line card-icon"></i>
-          <h3 className="card-title">CGPA Calculator</h3>
+          <div
+            className="iconHeading-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <i className="ri-bar-chart-line home-card-icon"></i>
+            <h3 className="card-title">CGPA Calculator</h3>
+          </div>
           <p className="card-description">
             Track your cumulative GPA across all semesters. Monitor your
             academic progress and set goals.
@@ -107,8 +141,18 @@ const Home = () => {
 
         {/* Timetable Generator */}
         <div className="feature-card">
-          <i className="ri-calendar-line card-icon"></i>
-          <h3 className="card-title">Timetable Generator</h3>
+          <div
+            className="iconHeading-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <i className="ri-calendar-line home-card-icon"></i>
+            <h3 className="card-title">Timetable Generator</h3>
+          </div>
           <p className="card-description">
             Create and customize your weekly class schedule. Generate PDF
             timetables for easy printing.
@@ -122,8 +166,18 @@ const Home = () => {
 
         {/* Front Page Designs */}
         <div className="feature-card">
-          <i className="ri-file-text-line card-icon"></i>
-          <h3 className="card-title">Front Page Designs</h3>
+          <div
+            className="iconHeading-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <i className="ri-file-text-line home-card-icon"></i>
+            <h3 className="card-title">Front Page Designs</h3>
+          </div>
           <p className="card-description">
             Professional assignment front page templates. Customize and download
             in PDF format.
@@ -137,8 +191,18 @@ const Home = () => {
 
         {/* Faculties & Departments */}
         <div className="feature-card">
-          <i className="ri-building-line card-icon"></i>
-          <h3 className="card-title">Faculties & Departments</h3>
+          <div
+            className="iconHeading-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "2rem",
+              flexWrap: "wrap",
+            }}
+          >
+            <i className="ri-building-line home-card-icon"></i>
+            <h3 className="card-title">Faculties & Departments</h3>
+          </div>
           <p className="card-description">
             Explore all BUITEMS faculties and departments. Quick access to
             department websites and information.

@@ -1,18 +1,30 @@
-import React from 'react';
+import React from "react";
 
 const GRADE_POINTS = {
-  'A+': 4.0, 'A': 4.0, 'A-': 3.7,
-  'B+': 3.3, 'B': 3.0, 'B-': 2.7,
-  'C+': 2.3, 'C': 2.0, 'C-': 1.7,
-  'D+': 1.3, 'D': 1.0, 'F': 0.0
+  A: 4.0,
+  "A-": 3.7,
+  "B+": 3.3,
+  B: 3.0,
+  "B-": 2.7,
+  "C+": 2.3,
+  C: 2.0,
+  "C-": 1.7,
+  D: 1.0,
+  F: 0.0,
 };
 
-const SemesterRecordsTab = ({ semesterRecords, recordsLoading, onAddSemester, onDeleteSemester }) => {
+const SemesterRecordsTab = ({
+  semesterRecords,
+  recordsLoading,
+  onAddSemester,
+  onDeleteSemester,
+}) => {
   const getGradeColor = (grade) => {
-    if (['A+', 'A', 'A-'].includes(grade)) return 'grade-a';
-    if (['B+', 'B', 'B-'].includes(grade)) return 'grade-b';
-    if (['C+', 'C', 'C-'].includes(grade)) return 'grade-c';
-    return 'grade-df';
+    if (["A", "A-"].includes(grade)) return "grade-a";
+    if (["B+", "B", "B-"].includes(grade)) return "grade-b";
+    if (["C+", "C", "C-"].includes(grade)) return "grade-c";
+    if (grade === 'D') return "grade-d";
+    return "grade-df";
   };
 
   if (recordsLoading) {
@@ -47,7 +59,10 @@ const SemesterRecordsTab = ({ semesterRecords, recordsLoading, onAddSemester, on
         <div className="empty-state">
           <div className="empty-icon">📚</div>
           <h3>No Semester Records Found</h3>
-          <p>Add your first semester record to start tracking your academic progress.</p>
+          <p>
+            Add your first semester record to start tracking your academic
+            progress.
+          </p>
           <button className="add-first-btn" onClick={onAddSemester}>
             <span className="btn-icon">➕</span>
             Add First Semester
@@ -58,7 +73,10 @@ const SemesterRecordsTab = ({ semesterRecords, recordsLoading, onAddSemester, on
           {semesterRecords
             .sort((a, b) => a.semesterNumber - b.semesterNumber)
             .map((semester) => (
-              <div key={semester._id || semester.semesterNumber} className="semester-card">
+              <div
+                key={semester._id || semester.semesterNumber}
+                className="semester-card"
+              >
                 <div className="semester-header">
                   <div className="semester-title">
                     <h3>Semester {semester.semesterNumber}</h3>
@@ -70,7 +88,7 @@ const SemesterRecordsTab = ({ semesterRecords, recordsLoading, onAddSemester, on
                     <span className="credit-hours-badge">
                       {semester.totalCreditHours || 0} Credit Hours
                     </span>
-                    <button 
+                    <button
                       className="delete-btn"
                       onClick={() => onDeleteSemester(semester.semesterNumber)}
                       title="Delete Semester"
@@ -91,23 +109,32 @@ const SemesterRecordsTab = ({ semesterRecords, recordsLoading, onAddSemester, on
                       </tr>
                     </thead>
                     <tbody>
-                      {semester.subjects?.map((subject, idx) => (
+                      {semester.subjects.map((subject, idx) => (
                         <tr key={idx}>
                           <td>{subject.name}</td>
                           <td className="text-right">{subject.creditHours}</td>
                           <td className="text-right">
-                            <span className={`grade-badge ${getGradeColor(subject.grade)}`}>
+                            <span
+                              className={`grade-badge ${getGradeColor(subject.grade)}`}
+                            >
                               {subject.grade}
                             </span>
                           </td>
                           <td className="text-right">
-                            {((GRADE_POINTS[subject.grade] || 0) * subject.creditHours).toFixed(1)}
+                            {(
+                              (GRADE_POINTS[subject.grade] || 0) *
+                              subject.creditHours
+                            ).toFixed(1)}
                           </td>
                         </tr>
                       ))}
                       <tr className="total-row">
-                        <td colSpan="2"><strong>Total</strong></td>
-                        <td className="text-right"><strong>GPA:</strong></td>
+                        <td colSpan="2">
+                          <strong>Total</strong>
+                        </td>
+                        <td className="text-right">
+                          <strong>GPA:</strong>
+                        </td>
                         <td className="text-right">
                           <strong className="total-gpa">
                             {parseFloat(semester.semesterGPA || 0).toFixed(2)}

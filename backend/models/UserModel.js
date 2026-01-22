@@ -1,4 +1,3 @@
-// models/UserModel.js
 const mongoose = require("mongoose");
 
 const semesterRecordSchema = new mongoose.Schema({
@@ -24,7 +23,6 @@ const semesterRecordSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: [
-          "A+",
           "A",
           "A-",
           "B+",
@@ -33,7 +31,6 @@ const semesterRecordSchema = new mongoose.Schema({
           "C+",
           "C",
           "C-",
-          "D+",
           "D",
           "F",
         ],
@@ -118,7 +115,6 @@ UserSchema.methods.calculateSemesterGPA = function (semesterIndex) {
 
   const gradePoints = semester.subjects.reduce((total, subject) => {
     const gradeMap = {
-      "A+": 4.0,
       A: 4.0,
       "A-": 3.7,
       "B+": 3.3,
@@ -127,7 +123,6 @@ UserSchema.methods.calculateSemesterGPA = function (semesterIndex) {
       "C+": 2.3,
       C: 2.0,
       "C-": 1.7,
-      "D+": 1.3,
       D: 1.0,
       F: 0.0,
     };

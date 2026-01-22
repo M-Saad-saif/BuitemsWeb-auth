@@ -216,10 +216,16 @@ HOme section
 
 
 .card-icon {
-  font-size: 3.5rem;
   margin-bottom: 20px;
+  position: relative;
   display: inline-block;
   transition: transform 0.3s ease;
+  top: 7px;
+  font-size: 20px;
+  background: #007bff;
+  width: 40px;
+  text-align: center;
+  border-radius: 13px;
 }
 
 /* Icon Colors */
@@ -3693,16 +3699,17 @@ Sign UP page
   margin-bottom: 16px;
 }
 
-.card-icon {
-  font-size: 24px;
-  background: #007bff;
-  color: white;
+.home-card-icon {
+  font-size: 31px;
+  /* background: #007bff; */
+  color: rgb(0 134 73);
   width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
+  height: 24px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
   justify-content: center;
+
 }
 
 .card-header h3 {
