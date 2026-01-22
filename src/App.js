@@ -18,6 +18,7 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import UserPortal from "./components/PortalOFuser";
 
 function App() {
   const ScrollUP = () => {
@@ -40,6 +41,8 @@ function App() {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/login" element={<Login />} />
+          <Route exact path="/portal" element={<UserPortal />} />
+          {/* <Route exact path="/portal" element={<ProfileHeader />} /> */}
           <Route
             exact
             path="/AggregateCalculator"

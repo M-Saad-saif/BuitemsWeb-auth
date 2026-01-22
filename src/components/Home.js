@@ -52,7 +52,7 @@ const Home = () => {
               Student Protal
             </p>
             <Link to="/portal">
-              <button className="credentialBTN">Portal <i class="fa-solid fa-graduation-cap"></i></button>
+              <button className="credentialBTN">Portal <i className="fa-solid fa-graduation-cap"></i></button>
             </Link>
           </div>
         </div>
