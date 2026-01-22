@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -219,19 +220,19 @@ const Home = () => {
       <div className="home-stats">
         <div className="stat-item">
           <span className="stat-number">6+</span>
-          <span className="stat-label">Tools Available</span>
+          <span className="stat-label text-white">Tools Available</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">100%</span>
-          <span className="stat-label">Free to Use</span>
+          <span className="stat-label text-white">Free to Use</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">24/7</span>
-          <span className="stat-label">Available</span>
+          <span className="stat-label text-white">Available</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">PDF</span>
-          <span className="stat-label">Export Support</span>
+          <span className="stat-label text-white">Export Support</span>
         </div>
       </div>
 
@@ -250,39 +251,8 @@ const Home = () => {
         </p>
       </div>
 
-      {/* Footer */}
-      <footer className="home-footer">
-        <p className="copyright my-3">Contect me if found something wrong</p>
-        <div className="footer-links">
-          <a
-            href="https://www.instagram.com/saadsaifsheikh/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            <i className="ri-instagram-line"></i> Instagram
-          </a>
-          <a href="mailto:gcsaadsaif123@gmail.com" className="footer-link">
-            <i className="ri-mail-line"></i> Email
-          </a>
-          <a
-            href="https://www.linkedin.com/in/muhammad-saad-saif-10b38a360/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            <i className="fa-brands fa-linkedin-in"></i> Linkedin
-          </a>
-          <a
-            href="https://github.com/M-Saad-saif"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            <i className="fa-brands fa-github"></i>Github
-          </a>
-        </div>
-      </footer>
+        <Footer/>
+  
     </div>
   );
 };

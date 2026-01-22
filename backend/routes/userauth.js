@@ -24,7 +24,7 @@ const GRADE_POINTS = {
   F: 0.0,
 };
 
-// ROUTE 1: Createing User (Updated with new fields)
+// ROUTE 1: Createing User
 router.post(
   "/createuser",
   [
@@ -427,7 +427,7 @@ router.put(
     body("Fullname").optional().isLength({ min: 2 }),
     body("Semester").optional().isInt({ min: 1, max: 10 }),
     body("profileImage").optional().isURL(),
-    body("CMS").optional().isString(),
+      body("CMS").optional().isInt().withMessage("CMS must be a valid number"),  
     body("department").optional().isString(),
   ],
   async (req, res) => {
@@ -438,7 +438,6 @@ router.put(
 
     try {
       const userId = req.user.id;
-      const updates = req.body;
 
       let user = await User.findById(userId);
       if (!user) {
@@ -447,34 +446,34 @@ router.put(
           .json({ success: false, error: "User not found" });
       }
 
-      // Update allowed fields
-      const allowedUpdates = [
-        "Fullname",
-        "Semester",
-        "profileImage",
-        "CMS",
-        "department",
-      ];
-      allowedUpdates.forEach((field) => {
-        if (updates[field] !== undefined) {
-          user[field] = updates[field];
-        }
-      });
+      const newUser = {};
 
-      await user.save();
+      if (user.Fullname) {
+        newUser.Fullname = req.body.Fullname;
+      }
+      if (user.Semester) {
+        newUser.Semester = req.body.Semester;
+      }
+      if (user.profileImage) {
+        newUser.profileImage = req.body.profileImage;
+      }
+      if (user.CMS) {
+        newUser.CMS = req.body.CMS;
+      }
+      if (user.department) {
+        newUser.department = req.body.department;
+      }
+
+      let UpdatedUser = await User.findByIdAndUpdate(
+        userId,
+        { $set: newUser },
+        { new: true },
+      );
 
       res.json({
         success: true,
         message: "Profile updated successfully",
-        profile: {
-          id: user._id,
-          Fullname: user.Fullname,
-          Email: user.Email,
-          Semester: user.Semester,
-          CMS: user.CMS,
-          department: user.department,
-          profileImage: user.profileImage,
-        },
+        UpdatedUser,
       });
     } catch (error) {
       console.error(error);
@@ -512,7 +511,7 @@ router.post(
     try {
       const { subjects } = req.body;
 
-      // Convert marks to grades
+      // Convertign marks to grades
       const subjectsWithGrades = subjects.map((subject) => {
         let grade = "F";
         const marks = subject.marks;

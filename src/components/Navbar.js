@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 export default function Navbar() {
-  const location = useLocation()
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -19,7 +18,6 @@ export default function Navbar() {
       {/* Desktop Navbar */}
       <nav className="navbar navbar-expand-lg d-none d-lg-block">
         <div className="container-fluid">
-          
           <Link className="navbar-brand" to="/">
             BUITEMS
           </Link>
@@ -37,12 +35,19 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className={`nav-link ${location.pathname === '/' ? "active": ""}`} aria-current="page" to="/">
+                <Link
+                  className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+                  aria-current="page"
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className={`nav-link ${location.pathname === '/about' ? "active": ""}`} to="/about">
+                <Link
+                  className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}
+                  to="/about"
+                >
                   About
                 </Link>
               </li>
@@ -111,9 +116,26 @@ export default function Navbar() {
                 </ul>
               </li>
             </ul>
-            <Link to="https://github.com/M-Saad-saif" target="_blank">
-              <button>GitHub</button>
-            </Link>
+
+            <div>
+              <Link
+                to="https://github.com/M-Saad-saif"
+                target="_blank"
+                className="mx-2"
+              >
+                <button>GitHub <i class="ri-github-fill"></i></button>
+              </Link>
+
+              {!localStorage.getItem("token") ? (
+                ""
+              ) : (
+                <Link to="/portal">
+                  <button>
+                    Portal <i className="fa-solid fa-graduation-cap "></i>
+                  </button>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </nav>

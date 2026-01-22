@@ -1,4 +1,5 @@
 import React from "react";
+import "./userPortal.css";
 
 const GRADE_POINTS = {
   A: 4.0,
@@ -27,7 +28,7 @@ const MARKS_RANGE = {
 };
 
 const getPerformanceText = (grade) => {
-  if (["A+", "A", "A-"].includes(grade)) return "Excellent";
+  if (["A", "A-"].includes(grade)) return "Excellent";
   if (["B+", "B", "B-"].includes(grade)) return "Good";
   if (["C+", "C", "C-"].includes(grade)) return "Work hard";
   return "Rehny dy bhai";

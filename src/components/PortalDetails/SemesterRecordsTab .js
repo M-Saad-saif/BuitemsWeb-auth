@@ -1,4 +1,5 @@
 import React from "react";
+import './userPortal.css'
 
 const GRADE_POINTS = {
   A: 4.0,

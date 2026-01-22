@@ -1,4 +1,5 @@
 import React from "react";
+import './userPortal.css'
 
 const GPAAnalysisTab = ({ user, semesterRecords, onAddSemester }) => {
   const calculateGPAAnalysis = () => {

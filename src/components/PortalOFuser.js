@@ -8,6 +8,8 @@ import GPAAnalysisTab from "./PortalDetails/GPAAnalysisTab";
 import GPACalculatorTab from "./PortalDetails/GPACalculatorTab";
 import AddSemesterDialog from "./PortalDetails/AddSemesterDialog";
 import EditProfileDialog from "./PortalDetails/EditProfileDialog";
+import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 export const GRADE_POINTS = {
   A: 4.0,
@@ -23,6 +25,7 @@ export const GRADE_POINTS = {
 };
 
 const UserPortal = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [semesterRecords, setSemesterRecords] = useState([]);
   const [currentTab, setCurrentTab] = useState(0);
@@ -156,7 +159,6 @@ const UserPortal = () => {
     setNewSemester({ ...newSemester, subjects: newSubjects });
   };
 
- 
   const handleAddSemester = async () => {
     const invalidSubjects = newSemester.subjects.filter(
       (subject) => !subject.name.trim(),
@@ -291,6 +293,29 @@ const UserPortal = () => {
     setSnackbar({ ...snackbar, open: false });
   };
 
+  const [logout, setLoggingOut] = useState(false);
+  const HandleLogout = () => {
+    setLoggingOut(true);
+    localStorage.removeItem("token");
+
+    setUser(null);
+
+    setTimeout(() => {
+      navigate("/");
+      setLoggingOut(false);
+    }, 1500);
+  };
+
+  // Logging out
+  if (logout) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <h3 className="loading-text">Logging OUT please wait</h3>
+      </div>
+    );
+  }
+
   // Loading state
   if (loading && !user) {
     return (
@@ -321,7 +346,11 @@ const UserPortal = () => {
   return (
     <div className="user-portal-container">
       {/* Header */}
-      <ProfileHeader user={user} profileLoading={profileLoading} />
+      <ProfileHeader
+        user={user}
+        profileLoading={profileLoading}
+        HandleLogout={HandleLogout}
+      />
 
       {/* Tabs */}
       <div className="tabs-container">
@@ -416,6 +445,8 @@ const UserPortal = () => {
           </button>
         </div>
       )}
+
+      <Footer />
     </div>
   );
 };

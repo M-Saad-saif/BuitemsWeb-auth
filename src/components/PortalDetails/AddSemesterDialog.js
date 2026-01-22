@@ -1,3 +1,5 @@
+import './userPortal.css'
+
 const GRADE_OPTIONS = [
   { label: "85% or Above (A)", value: "A" },
   { label: "80% - 84% (A-)", value: "A-" },
