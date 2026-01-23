@@ -14,6 +14,8 @@ export default function Signup() {
     CMS: "",
   });
 
+  const HOST_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -68,22 +70,19 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/createuser",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            Fullname: Fullname.trim(),
-            Semester: parseInt(Semester),
-            Email: Email.trim(),
-            department: department.trim(),
-            CMS: CMS.trim(),
-          }),
+      const response = await fetch(`${HOST_URL}/api/auth/createuser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          Fullname: Fullname.trim(),
+          Semester: parseInt(Semester),
+          Email: Email.trim(),
+          department: department.trim(),
+          CMS: CMS.trim(),
+        }),
+      });
 
       const json = await response.json();
 

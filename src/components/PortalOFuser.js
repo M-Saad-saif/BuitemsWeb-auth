@@ -51,6 +51,8 @@ const UserPortal = () => {
     profileImage: "",
   });
 
+  const HOST_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+
   // removing alert \ snakbar
   useEffect(() => {
     if (snackbar.open) {
@@ -81,7 +83,7 @@ const UserPortal = () => {
     try {
       setProfileLoading(true);
       const response = await axios.get(
-        "http://localhost:5000/api/auth/profile",
+        `${HOST_URL}/api/auth/profile`,
         {
           headers: { "auth-token": token },
         },
@@ -124,7 +126,7 @@ const UserPortal = () => {
     try {
       setRecordsLoading(true);
       const response = await axios.get(
-        "http://localhost:5000/api/auth/semester-records",
+        `${HOST_URL}/api/auth/semester-records`,
         {
           headers: { "auth-token": token },
         },
@@ -200,7 +202,7 @@ const UserPortal = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/add-semester",
+        `${HOST_URL}/api/auth/add-semester`,
         newSemester,
         {
           headers: { "auth-token": token },
@@ -236,7 +238,7 @@ const UserPortal = () => {
     ) {
       try {
         const response = await axios.delete(
-          `http://localhost:5000/api/auth/delete-semester/${semesterNumber}`,
+          `${HOST_URL}/api/auth/delete-semester/${semesterNumber}`,
           {
             headers: { "auth-token": token },
           },
@@ -272,7 +274,7 @@ const UserPortal = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/api/auth/update-profile",
+        `${HOST_URL}/api/auth/update-profile`,
         updateData,
         {
           headers: { "auth-token": token },
@@ -323,7 +325,7 @@ const UserPortal = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/auth/uploadprofilepic`,
+        `${HOST_URL}/api/auth/uploadprofilepic`,
         {
           method: "POST",
           headers: {
