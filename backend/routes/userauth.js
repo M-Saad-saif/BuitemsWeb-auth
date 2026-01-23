@@ -5,7 +5,6 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const upload = require("../utils/multerconfig");
-const { Router } = require("react-router-dom");
 require("dotenv").config();
 
 const JWT_Secure = process.env.JWT_SECRET;
