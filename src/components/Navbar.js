@@ -123,7 +123,7 @@ export default function Navbar() {
                 target="_blank"
                 className="mx-2"
               >
-                <button>GitHub <i class="ri-github-fill"></i></button>
+                <button>GitHub <i className="ri-github-fill"></i></button>
               </Link>
 
               {!localStorage.getItem("token") ? (

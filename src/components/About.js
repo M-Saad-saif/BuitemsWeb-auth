@@ -2,6 +2,9 @@ import React from "react";
 import Footer from "./Footer";
 export default function About() {
   return (
+    <>
+    <title>BUITEMS - About</title>
+     
     <div className="About-container">
       <header className="header-design">
         <div className="footer-wave"></div>
@@ -148,5 +151,7 @@ export default function About() {
       </div>
       <Footer />
     </div>
+    </>
+
   );
 }

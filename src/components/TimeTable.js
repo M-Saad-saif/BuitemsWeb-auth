@@ -97,6 +97,8 @@ const TimetableGenerator = () => {
 
 
   return (
+    <>
+    <title>BUITEMS - TimeTable Generator</title>
     <div id="timetable-body">
       <div id="timetable-container">
         <img src={buitemsLogo} alt="BUITEMS Logo" id="logoimgtt" />
@@ -190,6 +192,8 @@ const TimetableGenerator = () => {
         </Link>
       </div>
     </div>
+    </>
+
   );
 };
 

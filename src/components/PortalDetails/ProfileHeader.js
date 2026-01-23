@@ -6,6 +6,13 @@ const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
     HandleLogout();
   };
 
+  const capitalizeFirstLetter = (str) => {
+    if (typeof str !== "string" || str.length === 0) {
+      return ""; // Handles empty strings or non-string input
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   if (profileLoading) {
     return (
       <div className="profile-header profile-header-loading">
@@ -42,16 +49,20 @@ const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
         </div>
 
         <div className="profile-info">
-          <h1 className="profile-name">{user.Fullname || "User"}</h1>
+          <h1 className="profile-name">
+            {capitalizeFirstLetter(user.Fullname) || "User"}
+          </h1>
           <h2 className="profile-subtitle">
-            {user.department || "No Department"} • Semester{" "}
+            {capitalizeFirstLetter(user.department) || "No Department"} • Semester{" "}
             {user.Semester || "N/A"}
           </h2>
 
           <div className="profile-details">
             <div className="detail-item">
               <span className="detail-icon"></span>
-              <span className="detail-text"><i class="ri-mail-line"></i> {user.Email || "No Email"}</span>
+              <span className="detail-text">
+                <i className="ri-mail-line"></i> {user.Email || "No Email"}
+              </span>
             </div>
 
             {user.CMS && (
@@ -64,7 +75,9 @@ const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <button id="LogoutBTN" onClick={ClickHandleLogout}>Logout <i class="ri-logout-box-r-line"></i></button>
+          <button id="LogoutBTN" onClick={ClickHandleLogout}>
+            Logout <i className="ri-logout-box-r-line"></i>
+          </button>
 
           <div className="profile-cgpa">
             <div className="cgpa-chip">

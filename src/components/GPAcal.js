@@ -130,6 +130,8 @@ const GPACalculator = () => {
   }, [courses]);
 
   return (
+    <>
+    <title>BUITEMS - GPA Calculator</title>
     <div className="gpa-container">
       <img src={buitemsLogo} alt="BUITEMS Logo" id="logoimg-gpa-sec" />
       <h2 style={{ marginTop: "-21px" }}>GPA Calculator</h2>
@@ -237,6 +239,8 @@ const GPACalculator = () => {
         <button id="homepg">Home</button>
       </Link>
     </div>
+    </>
+
   );
 };
 

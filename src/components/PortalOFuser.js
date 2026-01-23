@@ -51,6 +51,17 @@ const UserPortal = () => {
     profileImage: "",
   });
 
+  // removing alert \ snakbar
+  useEffect(() => {
+    if (snackbar.open) {
+      const timer = setTimeout(() => {
+        setSnackbar((prev) => ({ ...prev, open: false }));
+      }, 1500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [snackbar.open]);
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -257,10 +268,12 @@ const UserPortal = () => {
       return;
     }
 
+    const { profileImage, ...updateData } = profileData; // Exclude profileImage from update
+
     try {
       const response = await axios.put(
         "http://localhost:5000/api/auth/update-profile",
-        profileData,
+        updateData,
         {
           headers: { "auth-token": token },
         },
@@ -282,6 +295,69 @@ const UserPortal = () => {
         error.response?.data?.error || "Failed to update profile",
         "error",
       );
+    }
+  };
+
+  const handleProfilePicUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      showSnackbar("image should be proper", "error");
+      setTimeout(() => "", 3000);
+      return;
+    }
+
+    // Validate file size (5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      showSnackbar("File size must be less than 5MB", "error");
+      setTimeout(() => "", 3000);
+      return;
+    }
+
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("profileImage", file);
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `http://localhost:5000/api/auth/uploadprofilepic`,
+        {
+          method: "POST",
+          headers: {
+            "auth-token": token,
+          },
+          body: formData,
+        },
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        showSnackbar("Profile picture updated successfully!", "success");
+
+        setUser(data.user);
+
+        //  update profileData state to reflect in EditProfileDialog preview
+        setProfileData((prev) => ({
+          ...prev,
+          profileImage: data.user.profileImage || prev.profileImage,
+        }));
+
+        setTimeout(() => "", 3000);
+      } else {
+        showSnackbar(data.error || "Failed to upload profile picture", "error");
+        setTimeout(() => "", 3000);
+      }
+    } catch (error) {
+      showSnackbar("Error uploading file. Please try again.", "error");
+      setTimeout(() => "", 3000);
+    } finally {
+      setLoading(false);
+      // Reset file input
+      e.target.value = "";
     }
   };
 
@@ -309,145 +385,161 @@ const UserPortal = () => {
   // Logging out
   if (logout) {
     return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <h3 className="loading-text">Logging OUT please wait</h3>
-      </div>
+      <>
+        <title>BUITEMS - Portal</title>;
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <h3 className="loading-text">Logging OUT please wait</h3>
+        </div>
+      </>
     );
   }
 
   // Loading state
   if (loading && !user) {
     return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <h3 className="loading-text">Loading User Portal...</h3>
-      </div>
+      <>
+        <title>BUITEMS - Portal</title>;
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <h3 className="loading-text">Loading User Portal...</h3>
+        </div>
+      </>
     );
   }
 
   // No user state or token expired
   if (!user || !token) {
     return (
-      <div className="session-expired">
-        <div className="expired-icon">🎓</div>
-        <h2>Session Expired or User Not Found</h2>
-        <p>Please login again to access the portal</p>
-        <button
-          className="login-btn"
-          onClick={() => (window.location.href = "/login")}
-        >
-          Go to Login
-        </button>
-      </div>
+      <>
+        <title>BUITEMS - Portal</title>;
+        <div className="session-expired">
+          <div className="expired-icon">🎓</div>
+          <h2>Session Expired or User Not Found</h2>
+          <p>Please login again to access the portal</p>
+          <button
+            className="login-btn"
+            onClick={() => (window.location.href = "/login")}
+          >
+            Go to Login
+          </button>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="user-portal-container">
-      {/* Header */}
-      <ProfileHeader
-        user={user}
-        profileLoading={profileLoading}
-        HandleLogout={HandleLogout}
-      />
+    <>
+      <title>BUITEMS - Portal</title>;
+      <div className="user-portal-container">
+        {/* Header */}
+        <ProfileHeader
+          user={user}
+          profileLoading={profileLoading}
+          HandleLogout={HandleLogout}
+        />
 
-      {/* Tabs */}
-      <div className="tabs-container">
-        <div className="tabs">
-          <button
-            className={`tab-btn ${currentTab === 0 ? "active" : ""}`}
-            onClick={() => setCurrentTab(0)}
-          >
-            <span className="tab-icon">👤</span>
-            <span className="tab-label">Profile</span>
-          </button>
-          <button
-            className={`tab-btn ${currentTab === 1 ? "active" : ""}`}
-            onClick={() => setCurrentTab(1)}
-          >
-            <span className="tab-icon">📚</span>
-            <span className="tab-label">Semester Records</span>
-          </button>
-          <button
-            className={`tab-btn ${currentTab === 2 ? "active" : ""}`}
-            onClick={() => setCurrentTab(2)}
-          >
-            <span className="tab-icon">📊</span>
-            <span className="tab-label">GPA Analysis</span>
-          </button>
-          <button
-            className={`tab-btn ${currentTab === 3 ? "active" : ""}`}
-            onClick={() => setCurrentTab(3)}
-          >
-            <span className="tab-icon">🧮</span>
-            <span className="tab-label">GPA Calculator</span>
-          </button>
+        {/* Tabs */}
+        <div className="tabs-container">
+          <div className="tabs">
+            <button
+              className={`tab-btn ${currentTab === 0 ? "active" : ""}`}
+              onClick={() => setCurrentTab(0)}
+            >
+              <span className="tab-icon">👤</span>
+              <span className="tab-label">Profile</span>
+            </button>
+            <button
+              className={`tab-btn ${currentTab === 1 ? "active" : ""}`}
+              onClick={() => setCurrentTab(1)}
+            >
+              <span className="tab-icon">📚</span>
+              <span className="tab-label">Semester Records</span>
+            </button>
+            <button
+              className={`tab-btn ${currentTab === 2 ? "active" : ""}`}
+              onClick={() => setCurrentTab(2)}
+            >
+              <span className="tab-icon">📊</span>
+              <span className="tab-label">GPA Analysis</span>
+            </button>
+            <button
+              className={`tab-btn ${currentTab === 3 ? "active" : ""}`}
+              onClick={() => setCurrentTab(3)}
+            >
+              <span className="tab-icon">🧮</span>
+              <span className="tab-label">GPA Calculator</span>
+            </button>
+          </div>
         </div>
+
+        {/* Tab Content */}
+        {currentTab === 0 && (
+          <ProfileTab
+            user={user}
+            semesterRecords={semesterRecords}
+            onEditProfile={() => setOpenEditProfile(true)}
+          />
+        )}
+
+        {currentTab === 1 && (
+          <SemesterRecordsTab
+            semesterRecords={semesterRecords}
+            recordsLoading={recordsLoading}
+            onAddSemester={() => setOpenAddSemester(true)}
+            onDeleteSemester={handleDeleteSemester}
+          />
+        )}
+
+        {currentTab === 2 && (
+          <GPAAnalysisTab
+            user={user}
+            semesterRecords={semesterRecords}
+            onAddSemester={() => setOpenAddSemester(true)}
+          />
+        )}
+
+        {currentTab === 3 && (
+          <GPACalculatorTab onAddSemester={() => setOpenAddSemester(true)} />
+        )}
+
+        {/* Dialogs */}
+        <AddSemesterDialog
+          open={openAddSemester}
+          onClose={() => setOpenAddSemester(false)}
+          newSemester={newSemester}
+          setNewSemester={setNewSemester}
+          handleAddSubject={handleAddSubject}
+          handleRemoveSubject={handleRemoveSubject}
+          handleSubjectChange={handleSubjectChange}
+          handleAddSemester={handleAddSemester}
+        />
+
+        <EditProfileDialog
+          open={openEditProfile}
+          onClose={() => setOpenEditProfile(false)}
+          profileData={profileData}
+          setProfileData={setProfileData}
+          handleUpdateProfile={handleUpdateProfile}
+          handleProfilePicUpload={handleProfilePicUpload}
+        />
+
+        {/* snackbar */}
+        {snackbar.open && (
+          <div className={`snackbar snackbar-${snackbar.type}`}>
+            <span className="snackbar-message">{snackbar.message}</span>
+            <button
+              onClick={handleCloseSnackbar}
+              className="snackbar-close-btn"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+
+        <Footer />
       </div>
-
-      {/* Tab Content */}
-      {currentTab === 0 && (
-        <ProfileTab
-          user={user}
-          semesterRecords={semesterRecords}
-          onEditProfile={() => setOpenEditProfile(true)}
-        />
-      )}
-
-      {currentTab === 1 && (
-        <SemesterRecordsTab
-          semesterRecords={semesterRecords}
-          recordsLoading={recordsLoading}
-          onAddSemester={() => setOpenAddSemester(true)}
-          onDeleteSemester={handleDeleteSemester}
-        />
-      )}
-
-      {currentTab === 2 && (
-        <GPAAnalysisTab
-          user={user}
-          semesterRecords={semesterRecords}
-          onAddSemester={() => setOpenAddSemester(true)}
-        />
-      )}
-
-      {currentTab === 3 && (
-        <GPACalculatorTab onAddSemester={() => setOpenAddSemester(true)} />
-      )}
-
-      {/* Dialogs */}
-      <AddSemesterDialog
-        open={openAddSemester}
-        onClose={() => setOpenAddSemester(false)}
-        newSemester={newSemester}
-        setNewSemester={setNewSemester}
-        handleAddSubject={handleAddSubject}
-        handleRemoveSubject={handleRemoveSubject}
-        handleSubjectChange={handleSubjectChange}
-        handleAddSemester={handleAddSemester}
-      />
-
-      <EditProfileDialog
-        open={openEditProfile}
-        onClose={() => setOpenEditProfile(false)}
-        profileData={profileData}
-        setProfileData={setProfileData}
-        handleUpdateProfile={handleUpdateProfile}
-      />
-
-      {/* snackbar */}
-      {snackbar.open && (
-        <div className={`snackbar snackbar-${snackbar.type}`}>
-          <span className="snackbar-message">{snackbar.message}</span>
-          <button onClick={handleCloseSnackbar} className="snackbar-close-btn">
-            ✕
-          </button>
-        </div>
-      )}
-
-      <Footer />
-    </div>
+    </>
   );
 };
 

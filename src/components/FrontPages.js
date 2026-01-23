@@ -8,6 +8,7 @@ import FP4 from "./images/ass pg 4.png";
 export default function FrontPages() {
   return (
     <>
+    <title>BUITEMS - FrontPages</title>
       <div className="fp-body">
         <div className="fp-container" id="genfp-body">
           <div className="fp-grid">

@@ -47,6 +47,7 @@ export default function Login() {
 
   return (
     <>
+          <title>BUITEMS Portal - Login</title>
       <div className="split-form " style={{ marginTop: "9rem" }}>
         <div className="image-side">
           <img src={buitemsLogo} alt="" />

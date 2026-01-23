@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import html2pdf from "html2pdf.js";
 import BuitemsLogo from "./images/buitems logo.png";
@@ -57,7 +57,7 @@ const GenerateFP = () => {
         date: { top: "216mm", left: "63mm" },
       },
       3: {
-           name: { top: "137mm", left: "77mm" },
+        name: { top: "137mm", left: "77mm" },
         cms: { top: "148mm", left: "69mm" },
         course: { top: "159mm", left: "78mm" },
         topic: { top: "181mm", left: "74mm" },
@@ -67,7 +67,7 @@ const GenerateFP = () => {
         date: { top: "214mm", left: "70mm" },
       },
       4: {
-            name: { top: "105mm", left: "43mm" },
+        name: { top: "105mm", left: "43mm" },
         cms: { top: "117mm", left: "39mm" },
         course: { top: "128mm", left: "46mm" },
         topic: { top: "152mm", left: "43mm" },
@@ -90,6 +90,10 @@ const GenerateFP = () => {
       [id]: value,
     }));
   };
+
+  // useEffect(() => {
+  //   document.title = `BUITEMS - FrontPage Design ${designNumber}`;
+  // }, [designNumber]);
 
   const generatePDF = () => {
     const element = pdfContentRef.current;
@@ -140,208 +144,211 @@ const GenerateFP = () => {
   };
 
   return (
-    <div className="design-container">
-      <div className="image-input-container-design">
-        <img src={BuitemsLogo} alt="BUITEMS Logo" id="logoimg-design-sec" />
+    <>
+      <title>{`BUITEMS - FrontPage Design ${designNumber}`}</title>
 
-        {/* THIS SHOWS THE SELECTED DESIGN NUMBER */}
-        <h2 style={{ marginTop: "-21px" }} id="design-heading">
-          Front Page - Design {designNumber}
-        </h2>
+      <div className="design-container">
+        <div className="image-input-container-design">
+          <img src={BuitemsLogo} alt="BUITEMS Logo" id="logoimg-design-sec" />
 
-        <div className="allinputs">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            placeholder="Enter Name"
-            id="name"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
+          <h2 style={{ marginTop: "-21px" }} id="design-heading">
+            Front Page - Design {designNumber}
+          </h2>
 
-          <label htmlFor="cms">CMS:</label>
-          <input
-            type="text"
-            placeholder="Enter CMS"
-            id="cms"
-            value={formData.cms}
-            onChange={handleInputChange}
-          />
+          <div className="allinputs">
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              placeholder="Enter Name"
+              id="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="course">Course:</label>
-          <input
-            type="text"
-            placeholder="Enter Course name"
-            id="course"
-            value={formData.course}
-            onChange={handleInputChange}
-          />
+            <label htmlFor="cms">CMS:</label>
+            <input
+              type="text"
+              placeholder="Enter CMS"
+              id="cms"
+              value={formData.cms}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="topic">Topic:</label>
-          <input
-            type="text"
-            placeholder="Enter Topic (optional)"
-            id="topic"
-            value={formData.topic}
-            onChange={handleInputChange}
-          />
+            <label htmlFor="course">Course:</label>
+            <input
+              type="text"
+              placeholder="Enter Course name"
+              id="course"
+              value={formData.course}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="department">Department:</label>
-          <input
-            type="text"
-            placeholder="Enter Department"
-            id="department"
-            value={formData.department}
-            onChange={handleInputChange}
-          />
+            <label htmlFor="topic">Topic:</label>
+            <input
+              type="text"
+              placeholder="Enter Topic (optional)"
+              id="topic"
+              value={formData.topic}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="semester">Semester:</label>
-          <input
-            type="text"
-            placeholder="Enter semester"
-            id="semester"
-            value={formData.semester}
-            onChange={handleInputChange}
-          />
+            <label htmlFor="department">Department:</label>
+            <input
+              type="text"
+              placeholder="Enter Department"
+              id="department"
+              value={formData.department}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="submitTo">Submit To:</label>
-          <input
-            type="text"
-            placeholder="Enter Instructor name"
-            id="submitTo"
-            value={formData.submitTo}
-            onChange={handleInputChange}
-          />
+            <label htmlFor="semester">Semester:</label>
+            <input
+              type="text"
+              placeholder="Enter semester"
+              id="semester"
+              value={formData.semester}
+              onChange={handleInputChange}
+            />
 
-          <label htmlFor="date">Date:</label>
-          <input
-            type="text"
-            placeholder="Enter date"
-            id="date"
-            value={formData.date}
-            onChange={handleInputChange}
-          />
-        </div>
+            <label htmlFor="submitTo">Submit To:</label>
+            <input
+              type="text"
+              placeholder="Enter Instructor name"
+              id="submitTo"
+              value={formData.submitTo}
+              onChange={handleInputChange}
+            />
 
-        <div className="action-buttons">
-          <button onClick={generatePDF} className="saveBTN">
-            Save to PDF
-          </button>
-          <Link to="/frontpages">
-            <button id="back-to-designBTN" className="saveBTN">
-              <i className="ri-arrow-left-fill"></i>Back to designs
+            <label htmlFor="date">Date:</label>
+            <input
+              type="text"
+              placeholder="Enter date"
+              id="date"
+              value={formData.date}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="action-buttons">
+            <button onClick={generatePDF} className="saveBTN">
+              Save to PDF
             </button>
-          </Link>
+            <Link to="/frontpages">
+              <button id="back-to-designBTN" className="saveBTN">
+                <i className="ri-arrow-left-fill"></i>Back to designs
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
 
-      {/* PDF Content */}
-      <div id="pdf-content" ref={pdfContentRef} style={{}}>
-        <img
-          id="bg-image"
-          src={backgroundImage}
-          alt={`Front Page Design ${designNumber}`}
-        />
-        <div className="dynamic-inputs">
-          <p
-            id="input1-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.name.top,
-              left: textPositions.name.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input2-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.cms.top,
-              left: textPositions.cms.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input3-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.course.top,
-              left: textPositions.course.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input4-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.topic.top,
-              left: textPositions.topic.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input5-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.department.top,
-              left: textPositions.department.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input6-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.semester.top,
-              left: textPositions.semester.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input7-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.submitTo.top,
-              left: textPositions.submitTo.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
-          <p
-            id="input8-d0"
-            style={{
-              position: "absolute",
-              top: textPositions.date.top,
-              left: textPositions.date.left,
-              fontSize: "16pt",
-              fontFamily: "Arial, sans-serif",
-              margin: "0",
-              padding: "0",
-            }}
-          ></p>
+        {/* PDF Content */}
+        <div id="pdf-content" ref={pdfContentRef} style={{}}>
+          <img
+            id="bg-image"
+            src={backgroundImage}
+            alt={`Front Page Design ${designNumber}`}
+          />
+          <div className="dynamic-inputs">
+            <p
+              id="input1-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.name.top,
+                left: textPositions.name.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input2-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.cms.top,
+                left: textPositions.cms.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input3-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.course.top,
+                left: textPositions.course.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input4-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.topic.top,
+                left: textPositions.topic.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input5-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.department.top,
+                left: textPositions.department.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input6-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.semester.top,
+                left: textPositions.semester.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input7-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.submitTo.top,
+                left: textPositions.submitTo.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+            <p
+              id="input8-d0"
+              style={{
+                position: "absolute",
+                top: textPositions.date.top,
+                left: textPositions.date.left,
+                fontSize: "16pt",
+                fontFamily: "Arial, sans-serif",
+                margin: "0",
+                padding: "0",
+              }}
+            ></p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

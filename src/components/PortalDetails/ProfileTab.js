@@ -3,6 +3,8 @@ import './userPortal.css'
 
 const ProfileTab = ({ user, semesterRecords, onEditProfile }) => {
   return (
+    <>
+         <title>BUITEMS - Portal | Profile</title>
     <div className="profile-tab">
       <div className="profile-header-section">
         <h2>Profile Information</h2>
@@ -76,6 +78,8 @@ const ProfileTab = ({ user, semesterRecords, onEditProfile }) => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 

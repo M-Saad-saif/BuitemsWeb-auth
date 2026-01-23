@@ -3102,3 +3102,20 @@ Sign UP page
 .split-form button:hover {
   transform: translateY(-2px);
 }
+
+
+/* In your CSS file */
+.error-message {
+  color: red;
+  background-color: #ffebee;
+  padding: 9px;
+  border-radius: 5px;
+  margin-bottom: -14px;
+  text-align: center;
+}
+
+.form-title {
+  color: #2157e0;
+  font-weight: 700;
+  text-align: center;
+}

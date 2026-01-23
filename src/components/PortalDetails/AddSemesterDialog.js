@@ -32,6 +32,7 @@ const AddSemesterDialog = ({
   };
 
   return (
+    <>
     <div className="dialog-overlay" onClick={handleBackdropClick}>
       <div className="dialog-container">
         <div className="dialog-header">
@@ -164,6 +165,8 @@ const AddSemesterDialog = ({
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 

@@ -1,19 +1,44 @@
-import React from 'react';
-import './userPortal.css'
+import React, { useState } from "react";
+import "./userPortal.css";
 
 const EditProfileDialog = ({
   open,
   onClose,
   profileData,
   setProfileData,
-  handleUpdateProfile
+  handleUpdateProfile,
+  handleProfilePicUpload,
 }) => {
+  const [uploading, setUploading] = useState(false);
+  // const [UploadMessageType, setUploadMessageType] = useState("");
+  // const [UploadMessage, setUploadMessage] = useState("");
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
+  const uploadingPFP = (e) => {
+    setUploading(true);
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setProfileData((prev) => ({
+          ...prev,
+          profileImage: event.target.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+
+    handleProfilePicUpload(e);
+
+    setTimeout(() => {
+      setUploading(false);
+    }, 2000);
+  };
   if (!open) return null;
 
   return (
@@ -22,7 +47,7 @@ const EditProfileDialog = ({
         <div className="dialog-header">
           <h2 className="dialog-title">Edit Profile</h2>
         </div>
-        
+
         <div className="dialog-content">
           <div className="form-grid">
             {/* Full Name */}
@@ -30,9 +55,11 @@ const EditProfileDialog = ({
               <label className="form-label required">Full Name</label>
               <input
                 type="text"
-                className={`form-input ${!profileData.Fullname.trim() ? 'error' : ''}`}
+                className={`form-input ${!profileData.Fullname.trim() ? "error" : ""}`}
                 value={profileData.Fullname}
-                onChange={(e) => setProfileData({...profileData, Fullname: e.target.value})}
+                onChange={(e) =>
+                  setProfileData({ ...profileData, Fullname: e.target.value })
+                }
                 placeholder="Enter your full name"
                 required
               />
@@ -47,11 +74,18 @@ const EditProfileDialog = ({
               <select
                 className="form-select"
                 value={profileData.Semester}
-                onChange={(e) => setProfileData({...profileData, Semester: parseInt(e.target.value) || 1})}
+                onChange={(e) =>
+                  setProfileData({
+                    ...profileData,
+                    Semester: parseInt(e.target.value) || 1,
+                  })
+                }
                 required
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                  <option key={num} value={num}>Semester {num}</option>
+                  <option key={num} value={num}>
+                    Semester {num}
+                  </option>
                 ))}
               </select>
             </div>
@@ -61,9 +95,11 @@ const EditProfileDialog = ({
               <label className="form-label required">CMS ID</label>
               <input
                 type="text"
-                className={`form-input ${!profileData.CMS ? 'error' : ''}`}
+                className={`form-input ${!profileData.CMS ? "error" : ""}`}
                 value={profileData.CMS}
-                onChange={(e) => setProfileData({...profileData, CMS: e.target.value})}
+                onChange={(e) =>
+                  setProfileData({ ...profileData, CMS: e.target.value })
+                }
                 placeholder="Enter your CMS ID"
                 required
               />
@@ -79,39 +115,52 @@ const EditProfileDialog = ({
                 type="text"
                 className="form-input"
                 value={profileData.department}
-                onChange={(e) => setProfileData({...profileData, department: e.target.value})}
+                onChange={(e) =>
+                  setProfileData({ ...profileData, department: e.target.value })
+                }
                 placeholder="Enter your department"
               />
             </div>
 
-            {/* Profile Image URL */}
-            <div className="form-group full-width">
-              <label className="form-label">Profile Image URL</label>
-              <input
-                type="text"
-                className="form-input"
-                value={profileData.profileImage}
-                onChange={(e) => setProfileData({...profileData, profileImage: e.target.value})}
-                placeholder="https://example.com/your-photo.jpg"
-              />
-              <div className="help-text">
-                Enter a valid image URL (optional)
-              </div>
-              
+            <div className="profile-upload-section">
+              <label htmlFor="profilePicInput" className="upload-label">
+                <input
+                  id="profilePicInput"
+                  type="file"
+                  name="profilepic"
+                  className="file-input"
+                  onChange={uploadingPFP}
+                  disabled={uploading}
+                  accept="image/*"
+                  style={{ display: "none" }}
+                />
+                <button
+                  style={{ background: "#077eff", color: "white" }}
+                  className="btn btn-info btn-sm"
+                  disabled={uploading}
+                  type="button"
+                  onClick={() =>
+                    document.getElementById("profilePicInput").click()
+                  }
+                >
+                  {uploading ? "Uploading..." : "Choose Profile Picture"}
+                </button>
+              </label>
+
               {/* Image Preview */}
               {profileData.profileImage && (
                 <div className="image-preview">
                   <div className="preview-label">Preview:</div>
-                  <img 
-                    src={profileData.profileImage} 
-                    alt="Profile preview" 
+                  <img
+                    src={profileData.profileImage}
+                    alt="Profile preview"
                     className="preview-image"
                     onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextElementSibling.style.display = 'block';
+                      e.target.style.display = "none";
+                      e.target.nextElementSibling.style.display = "block";
                     }}
                   />
-                  <div className="preview-fallback" style={{ display: 'none' }}>
+                  <div className="preview-fallback" style={{ display: "none" }}>
                     <div className="fallback-icon">🖼️</div>
                     <div className="fallback-text">Invalid image URL</div>
                   </div>
@@ -123,11 +172,7 @@ const EditProfileDialog = ({
 
         {/* Dialog Actions */}
         <div className="dialog-actions">
-          <button
-            className="btn-cancel"
-            onClick={onClose}
-            type="button"
-          >
+          <button className="btn-cancel" onClick={onClose} type="button">
             Cancel
           </button>
           <button

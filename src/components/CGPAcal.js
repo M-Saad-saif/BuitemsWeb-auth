@@ -130,6 +130,8 @@ const CGPACalculator = () => {
   }, [semesters]);
 
   return (
+    <>
+    <title>BUITEMS - CGPA Calculator</title>
     <div className="Cgpa-container">
       <img src={buitemsLogo} alt="BUITEMS Logo" id="logoimg-Cgpa-sec" />
       <h2 style={{ marginTop: "-21px" }}>CGPA Calculator</h2>
@@ -231,6 +233,8 @@ const CGPACalculator = () => {
         <button id="homepg">Home</button>
       </Link>
     </div>
+    </>
+
   );
 };
 

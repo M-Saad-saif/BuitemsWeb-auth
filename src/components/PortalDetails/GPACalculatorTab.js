@@ -43,6 +43,8 @@ const getGradeColor = (grade) => {
 
 const GPACalculatorTab = ({ onAddSemester }) => {
   return (
+    <>
+    <title>BUITEMS - Portal | GPA Calculator</title>
     <div className="gpa-calculator-tab">
       <div className="tab-header">
         <h2>GPA Calculator</h2>
@@ -104,6 +106,8 @@ const GPACalculatorTab = ({ onAddSemester }) => {
         </button>
       </div>
     </div>
+    </>
+
   );
 };
 

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 const FacultiesDept = () => {
   return (
+    <>
+    <title>BUITEMS - Faculties | Departments</title>
     <div id="facu-and-eng-body">
       <section className="propectus-portion">
         {/* Basic Sciences */}
@@ -1033,6 +1035,8 @@ const FacultiesDept = () => {
         </div>
       </section>
     </div>
+    </>
+
   );
 };
 
