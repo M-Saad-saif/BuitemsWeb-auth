@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import { Link, useParams } from "react-router-dom";
 import html2pdf from "html2pdf.js";
 import BuitemsLogo from "./images/buitems logo.png";
@@ -90,10 +90,6 @@ const GenerateFP = () => {
       [id]: value,
     }));
   };
-
-  // useEffect(() => {
-  //   document.title = `BUITEMS - FrontPage Design ${designNumber}`;
-  // }, [designNumber]);
 
   const generatePDF = () => {
     const element = pdfContentRef.current;

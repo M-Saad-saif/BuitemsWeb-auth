@@ -4,14 +4,15 @@ import buitemsLogo from "./images/buitems logo.png";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [laoding, setLoading] = useState(false);
+  const [loggin, setLoggin] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [credential, setCredential] = useState({
     Email: "",
     CMS: "",
   });
 
-    const HOST_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+  const HOST_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,8 +31,12 @@ export default function Login() {
 
       const json = await response.json();
       if (json.success) {
+        setLoggin(true);
         localStorage.setItem("token", json.token);
-        navigate("/portal");
+
+        setTimeout(() => {
+          navigate("/portal");
+        }, 1500);
       } else {
         setError(json.error || "failed to login");
       }
@@ -47,9 +52,18 @@ export default function Login() {
     setCredential({ ...credential, [e.target.name]: e.target.value });
   };
 
+  if (loggin === true) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <h3 className="loading-text">Logging in ... Please Wait</h3>
+      </div>
+    );
+  }
+
   return (
     <>
-          <title>BUITEMS Portal - Login</title>
+      <title>BUITEMS Portal - Login</title>
       <div className="split-form " style={{ marginTop: "9rem" }}>
         <div className="image-side">
           <img src={buitemsLogo} alt="" />
@@ -97,7 +111,18 @@ export default function Login() {
               </div>
             )}
 
-            <button type="submit">Login</button>
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <>
+                  <span className="spinner-small"></span>
+                  Processing...
+                </>
+              ) : (
+                <>
+                  Login to Portal <i className="ri-login-circle-line"></i>
+                </>
+              )}
+            </button>
           </form>
           <hr />
           <p>
