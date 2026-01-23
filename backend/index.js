@@ -3,6 +3,7 @@ const express = require("express");
 const connetionToMongooDB = require("./DB");
 const cors = require("cors");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
+require("./utils/cloudinary"); 
 
 const app = express();
 connetionToMongooDB();
@@ -11,10 +12,7 @@ app.use(
   cors({
     origin: "*", // Allowign aLL origins for now
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: [
-      "Content-Type",
-      "auth-token",
-    ],
+    allowedHeaders: ["Content-Type", "auth-token"],
   }),
 );
 

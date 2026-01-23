@@ -4,6 +4,8 @@ const fetchUser = require("../middleware/fetchuser");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
+const upload = require("../utils/multerconfig");
+const { Router } = require("react-router-dom");
 require("dotenv").config();
 
 const JWT_Secure = process.env.JWT_SECRET;
@@ -426,8 +428,7 @@ router.put(
   [
     body("Fullname").optional().isLength({ min: 2 }),
     body("Semester").optional().isInt({ min: 1, max: 10 }),
-    body("profileImage").optional().isURL(),
-      body("CMS").optional().isInt().withMessage("CMS must be a valid number"),  
+    body("CMS").optional().isInt().withMessage("CMS must be a valid number"),
     body("department").optional().isString(),
   ],
   async (req, res) => {
@@ -448,19 +449,19 @@ router.put(
 
       const newUser = {};
 
-      if (user.Fullname) {
+      if (req.body.Fullname !== undefined) {
         newUser.Fullname = req.body.Fullname;
       }
-      if (user.Semester) {
+      if (req.body.Semester !== undefined) {
         newUser.Semester = req.body.Semester;
       }
-      if (user.profileImage) {
+      if (req.body.profileImage !== undefined) {
         newUser.profileImage = req.body.profileImage;
       }
-      if (user.CMS) {
+      if (req.body.CMS !== undefined) {
         newUser.CMS = req.body.CMS;
       }
-      if (user.department) {
+      if (req.body.department !== undefined) {
         newUser.department = req.body.department;
       }
 
@@ -560,6 +561,52 @@ router.post(
       res.status(500).json({
         success: false,
         error: "Cannot calculate GPA",
+        message: error.message,
+      });
+    }
+  },
+);
+
+// ROUTE 10: uplading profile pic
+router.post(
+  "/uploadprofilepic",
+  upload.single("profileImage"),
+  fetchUser,
+  async (req, res) => {
+    try {
+      if (!req.file || !req.file.path) {
+        return res
+          .status(400)
+          .json({ success: false, error: "Failed to upload profile picture" });
+      }
+
+      const userID = req.user.id;
+      const profilepicPath = req.file.path;
+
+      console.log("Cloudinary URL:", profilepicPath);
+
+      const user = await User.findByIdAndUpdate(
+        userID,
+        { profileImage: profilepicPath },
+        { new: true },
+      );
+
+      if (!user) {
+        return res
+          .status(404)
+          .json({ success: false, error: "User not found" });
+      }
+
+      res.json({
+        success: true,
+        message: "Profile picture uploaded successfully",
+        user,
+      });
+    } catch (error) {
+      console.error("Upload error:", error);
+      res.status(500).json({
+        success: false,
+        error: "Cannot upload profile picture due to internal issues",
         message: error.message,
       });
     }
