@@ -353,7 +353,7 @@ HOme section
   border-radius: 12px;
   backdrop-filter: blur(6px);
   border-top: 1px solid #083468;
-  background: linear-gradient(180deg, #083368cc, #08336843);
+  background: linear-gradient(180deg, #007bff, #0072ff8a)
 }
 
 .footer-links {
@@ -364,7 +364,7 @@ HOme section
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255, 255, 255);
   text-decoration: none;
   transition: all 0.3s ease;
   display: flex;
@@ -488,6 +488,20 @@ HOme section
   flex-wrap: wrap;
 }
 
+.credentialBTNs p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #083262;
+  margin-bottom: 5px;
+}
+
+#studentPortal p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #083262;
+  margin-bottom: -5px;
+}
+
 .intro-div {
   color: white;
   font-size: 22px;
@@ -562,6 +576,13 @@ HOme section
     gap: 0;
   }
 
+  .credentialBTNs p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #083262;
+    margin-bottom: 5px;
+  }
+
   .credentialBTN {
     font-size: 15px;
     gap: 0;
@@ -588,6 +609,13 @@ HOme section
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin-top: 2px;
+  }
+
+  #studentPortal p {
+    font-size: 21px;
+    font-weight: 700;
+    color: #083262;
+    margin-bottom: -3px;
   }
 
   .intro-div {
@@ -896,6 +924,7 @@ option {
   transform: translateX(-50%);
   font-size: 14px;
   margin-top: 25px;
+  margin-bottom: 18px;
 }
 
 #homepg {
@@ -1957,7 +1986,7 @@ table {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .container {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -1970,11 +1999,88 @@ table {
     width: 90%;
   }
 
-  .agg-container,
+  .agg-container {
+    width: 90%;
+    min-width: unset;
+    margin: 10% auto;
+    height: 750px;
+  }
+
   .gpa-container {
     width: 90%;
     min-width: unset;
     margin: 10% auto;
+  }
+
+  .Cgpa-container {
+    width: 89%;
+  }
+
+  #timetable-container {
+    width: 100%;
+  }
+
+  #adding-crs-btn,
+  #gen-pdf {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+
+  }
+
+  #adding-crs-btn {
+    margin-top: -9px;
+  }
+
+  #pdf-gen {
+    width: 29vh;
+    margin-top: 0;
+  }
+
+  .Homepg {
+    margin-bottom: 18px;
+  }
+
+  #homepg {
+
+    margin-bottom: 12px;
+  }
+
+  .fp-card {
+    padding: 1px 7px;
+  }
+
+  .image-container {
+    width: 78%;
+    height: auto;
+    justify-self: center;
+  }
+
+  .design-image {
+    width: 100%;
+    height: 81%;
+  }
+
+  .click-indicator {
+    margin-top: -3px;
+    margin-bottom: 12px;
+  }
+
+  #genfp-body {
+    margin-top: -50px;
+  }
+
+  .fp-footer {
+    bottom: -100px;
+  }
+
+  .image-input-container-design {
+    margin-top: -34rem;
+  }
+
+  .fp-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   #logoimg,
@@ -2019,7 +2125,7 @@ table {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 300px) {
   .container {
     width: 98%;
     margin-top: 20%;
@@ -2049,7 +2155,7 @@ table {
   .aggregate-inputs,
   .gpa-inputs {
     width: 100%;
-    margin: 15px;
+    height: 77vh;
   }
 
   /* Front Pages Mobile */

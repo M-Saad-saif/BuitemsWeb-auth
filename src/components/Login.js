@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import buitemsLogo from "./images/buitems logo.png";
+import { InfinitySpin } from "react-loader-spinner";
 
 export default function Login({ setProgress }) {
   const navigate = useNavigate();
@@ -51,11 +52,10 @@ export default function Login({ setProgress }) {
     setCredential({ ...credential, [e.target.name]: e.target.value });
   };
 
-
   return (
     <>
       <title>BUITEMS Portal - Login</title>
-      <div className="split-form "  id="Logincomponent" >
+      <div className="split-form " id="Logincomponent">
         <div className="image-side">
           <img src={buitemsLogo} alt="" />
           <h2>Welcome Back!</h2>
@@ -99,6 +99,13 @@ export default function Login({ setProgress }) {
                 }}
               >
                 {error}
+              </div>
+            )}
+
+            {loading && (
+              <div className="text-center">
+                <InfinitySpin width="200" color="#4d6aa9" />
+                <h6>Waking up the server ... Please Wait</h6>
               </div>
             )}
 

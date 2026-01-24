@@ -19,11 +19,7 @@ const Home = () => {
       <div className="buttons">
         <div className="credential-card">
           <div className="credentialBTNs">
-            <p
-              style={{ fontSize: "21px", fontWeight: " 700", color: "#083262" }}
-            >
-              Create Account to have personal portal
-            </p>
+            <p>Create Account to have personal portal</p>
             <div className="buttons">
               <Link to="/Signup">
                 <button className="credentialBTN ">
@@ -41,12 +37,8 @@ const Home = () => {
 
           <div className="Credential-divider"></div>
 
-          <div style={{ gap: "9px", display: "grid" }}>
-            <p
-              style={{ fontSize: "21px", fontWeight: " 700", color: "#083262" }}
-            >
-              Student Protal
-            </p>
+          <div id="studentPortal" style={{ gap: "8px", display: "grid" }}>
+            <p>Student Protal</p>
             <Link to="/portal">
               <button className="credentialBTN">
                 Portal <i className="fa-solid fa-graduation-cap"></i>
@@ -74,7 +66,7 @@ const Home = () => {
           </div>
           <p className="card-description">
             Calculate your admission aggregate based on matric, FSC, and NTS
-            marks. 
+            marks.
           </p>
           <Link to="/AggregateCalculator">
             <button className="card-action-btn">
@@ -229,7 +221,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="intro-div"
+      <div
+        className="intro-div"
         // style={{
         //   color: "white",
         //   fontSize: "22px",

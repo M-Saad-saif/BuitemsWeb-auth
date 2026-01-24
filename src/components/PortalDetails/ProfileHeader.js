@@ -49,13 +49,15 @@ const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
         </div>
 
         <div className="profile-info">
-          <h1 className="profile-name">
-            {capitalizeFirstLetter(user.Fullname) || "User"}
-          </h1>
-          <h2 className="profile-subtitle">
-            {capitalizeFirstLetter(user.department) || "No Department"} • Semester{" "}
-            {user.Semester || "N/A"}
-          </h2>
+          <div className="information">
+            <h1 className="profile-name">
+              {capitalizeFirstLetter(user.Fullname) || "User"}
+            </h1>
+            <h2 className="profile-subtitle">
+              {capitalizeFirstLetter(user.department) || "No Department"} •
+              Semester {user.Semester || "N/A"}
+            </h2>
+          </div>
 
           <div className="profile-details">
             <div className="detail-item">
