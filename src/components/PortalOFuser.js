@@ -24,7 +24,8 @@ export const GRADE_POINTS = {
   F: 0.0,
 };
 
-const UserPortal = () => {
+const UserPortal = (props) => {
+  const { setProgress } = props;
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [semesterRecords, setSemesterRecords] = useState([]);
@@ -80,14 +81,12 @@ const UserPortal = () => {
   }, [token]);
 
   const fetchUserData = async () => {
+    setProgress(30);
     try {
       setProfileLoading(true);
-      const response = await axios.get(
-        `${HOST_URL}/api/auth/profile`,
-        {
-          headers: { "auth-token": token },
-        },
-      );
+      const response = await axios.get(`${HOST_URL}/api/auth/profile`, {
+        headers: { "auth-token": token },
+      });
 
       console.log("Profile API Response:", response.data);
 
@@ -120,9 +119,12 @@ const UserPortal = () => {
       setProfileLoading(false);
       setLoading(false);
     }
+    setProgress(100);
   };
 
   const fetchSemesterRecords = async () => {
+    setProgress(30);
+
     try {
       setRecordsLoading(true);
       const response = await axios.get(
@@ -132,7 +134,7 @@ const UserPortal = () => {
         },
       );
 
-      console.log("Semester Records Response:", response.data);
+      // console.log("Semester Records Response:", response.data);
 
       if (response.data.success) {
         setSemesterRecords(response.data.semesterRecords || []);
@@ -151,6 +153,7 @@ const UserPortal = () => {
     } finally {
       setRecordsLoading(false);
     }
+    setProgress(100);
   };
 
   const handleAddSubject = () => {
@@ -195,10 +198,10 @@ const UserPortal = () => {
       return;
     }
 
-    console.log(
-      "Sending data with grades:",
-      newSemester.subjects.map((s) => s.grade),
-    );
+    // console.log(
+    //   "Sending data with grades:",
+    //   newSemester.subjects.map((s) => s.grade),
+    // );
 
     try {
       const response = await axios.post(
@@ -272,6 +275,8 @@ const UserPortal = () => {
 
     const { profileImage, ...updateData } = profileData; // Exclude profileImage from update
 
+    setProgress(30);
+
     try {
       const response = await axios.put(
         `${HOST_URL}/api/auth/update-profile`,
@@ -298,6 +303,7 @@ const UserPortal = () => {
         "error",
       );
     }
+    setProgress(100);
   };
 
   const handleProfilePicUpload = async (e) => {
@@ -324,16 +330,13 @@ const UserPortal = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(
-        `${HOST_URL}/api/auth/uploadprofilepic`,
-        {
-          method: "POST",
-          headers: {
-            "auth-token": token,
-          },
-          body: formData,
+      const response = await fetch(`${HOST_URL}/api/auth/uploadprofilepic`, {
+        method: "POST",
+        headers: {
+          "auth-token": token,
         },
-      );
+        body: formData,
+      });
 
       const data = await response.json();
 
@@ -419,10 +422,7 @@ const UserPortal = () => {
           <div className="expired-icon">🎓</div>
           <h2>Session Expired or User Not Found</h2>
           <p>Please login again to access the portal</p>
-          <button
-            className="login-btn"
-            onClick={() => (window.location.href = "/login")}
-          >
+          <button className="login-btn" onClick={() => navigate("/login")}>
             Go to Login
           </button>
         </div>

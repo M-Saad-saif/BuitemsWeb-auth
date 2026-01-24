@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import LoadingBar from "react-top-loading-bar";
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,18 +32,24 @@ function App() {
     return null;
   };
 
+  const [progress, setProgress] = useState(0);
+
   return (
     <>
       <Router>
         <ScrollUP />
+        <LoadingBar
+          color="#ffffff"
+          progress={progress}
+          onLoaderFinished={() => setProgress(0)}
+        />
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/portal" element={<UserPortal />} />
-          {/* <Route exact path="/portal" element={<ProfileHeader />} /> */}
+          <Route exact path="/signup" element={<Signup setProgress={setProgress}/>} />
+          <Route exact path="/login" element={<Login setProgress={setProgress}/>} />
+          <Route exact path="/portal" element={<UserPortal  setProgress={setProgress}/>} />
           <Route
             exact
             path="/AggregateCalculator"

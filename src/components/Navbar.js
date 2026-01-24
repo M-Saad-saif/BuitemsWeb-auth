@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function Navbar() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isToolsOpen, setIsToolopen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -12,6 +13,10 @@ export default function Navbar() {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  const toggleToolDropdown =()=>{
+    setIsToolopen(!isToolsOpen)
+  }
 
   return (
     <>
@@ -146,7 +151,7 @@ export default function Navbar() {
         <div className="mobile-nav-header">
           <div className="mobile-nav-brand">
             <Link to="/" onClick={closeMobileMenu}>
-              Navbar
+              BUITEMS
             </Link>
           </div>
           <button
@@ -208,12 +213,12 @@ export default function Navbar() {
               </li>
 
               <li className="mobile-nav-item mobile-nav-dropdown">
-                <div className="mobile-nav-dropdown-header">
+                <div className="mobile-nav-dropdown-header" onClick={toggleToolDropdown}>
                   <i className="ri-tools-line"></i>
                   <span>Tools</span>
-                  <i className="ri-arrow-down-s-line dropdown-arrow"></i>
+                  <i className={`ri-arrow-down-s-line dropdown-arrow ${isToolsOpen ? 'rotate-180' : ''}`} ></i>
                 </div>
-                <ul className="mobile-nav-dropdown-menu">
+                <ul className={`mobile-nav-dropdown-menu ${isToolsOpen ? 'show' : 'hide'}`}>
                   <li>
                     <Link
                       className="mobile-dropdown-item"

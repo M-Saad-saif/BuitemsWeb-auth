@@ -39,14 +39,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div
-            style={{
-              width: "2px",
-              height: "100px",
-              backgroundColor: "#083262",
-              borderRadius: "1px",
-            }}
-          ></div>
+          <div className="Credential-divider"></div>
 
           <div style={{ gap: "9px", display: "grid" }}>
             <p
@@ -69,19 +62,19 @@ const Home = () => {
         <div className="feature-card">
           <div
             className="iconHeading-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-            }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   marginTop: "2rem",
+            //   flexWrap: "wrap",
+            // }}
           >
             <i className="ri-calculator-line home-card-icon"></i>
             <h3 className="card-title">Aggregate Calculator</h3>
           </div>
           <p className="card-description">
             Calculate your admission aggregate based on matric, FSC, and NTS
-            marks. Get accurate results instantly.
+            marks. 
           </p>
           <Link to="/AggregateCalculator">
             <button className="card-action-btn">
@@ -94,19 +87,19 @@ const Home = () => {
         <div className="feature-card">
           <div
             className="iconHeading-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-            }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   marginTop: "2rem",
+            //   flexWrap: "wrap",
+            // }}
           >
             <i className="ri-line-chart-line home-card-icon"></i>
             <h3 className="card-title">GPA Calculator</h3>
           </div>
           <p className="card-description">
             Calculate your semester GPA with our easy-to-use calculator.
-            Supports multiple courses and credit hours.
+            Supports multiple courses.
           </p>
           <Link to="/GPAcalculator">
             <button className="card-action-btn">
@@ -119,12 +112,12 @@ const Home = () => {
         <div className="feature-card">
           <div
             className="iconHeading-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-            }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   marginTop: "2rem",
+            //   flexWrap: "wrap",
+            // }}
           >
             <i className="ri-bar-chart-line home-card-icon"></i>
             <h3 className="card-title">CGPA Calculator</h3>
@@ -144,19 +137,19 @@ const Home = () => {
         <div className="feature-card">
           <div
             className="iconHeading-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-            }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   marginTop: "2rem",
+            //   flexWrap: "wrap",
+            // }}
           >
             <i className="ri-calendar-line home-card-icon"></i>
             <h3 className="card-title">Timetable Generator</h3>
           </div>
           <p className="card-description">
             Create and customize your weekly class schedule. Generate PDF
-            timetables for easy printing.
+            timetables.
           </p>
           <Link to="/timetable">
             <button className="card-action-btn">
@@ -169,12 +162,12 @@ const Home = () => {
         <div className="feature-card">
           <div
             className="iconHeading-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-            }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   marginTop: "2rem",
+            //   flexWrap: "wrap",
+            // }}
           >
             <i className="ri-file-text-line home-card-icon"></i>
             <h3 className="card-title">Front Page Designs</h3>
@@ -194,23 +187,23 @@ const Home = () => {
         <div className="feature-card">
           <div
             className="iconHeading-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-            }}
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   marginTop: "2rem",
+            //   flexWrap: "wrap",
+            // }}
           >
             <i className="ri-building-line home-card-icon"></i>
             <h3 className="card-title">Faculties & Departments</h3>
           </div>
           <p className="card-description">
             Explore all BUITEMS faculties and departments. Quick access to
-            department websites and information.
+            department websites.
           </p>
           <Link to="/FacultiesDepartments">
             <button className="card-action-btn">
-              Explore Departments <i className="ri-arrow-right-line"></i>
+              Explore Dep <i className="ri-arrow-right-line"></i>
             </button>
           </Link>
         </div>
@@ -236,23 +229,22 @@ const Home = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          color: "white",
-          fontSize: "22px",
-          marginBottom: "-10px",
-          borderRadius: "18px",
-          padding: " 9px 36px",
-          background: "linear-gradient(135deg, #021935, #043065)",
-        }}
+      <div className="intro-div"
+        // style={{
+        //   color: "white",
+        //   fontSize: "22px",
+        //   marginBottom: "-10px",
+        //   borderRadius: "18px",
+        //   padding: " 9px 36px",
+        //   background: "linear-gradient(135deg, #021935, #043065)",
+        // }}
       >
         <p style={{ alignItems: "anchor-center", marginBottom: "0" }}>
           Muhammad Saad Saif | Computer Science | 4th semester{" "}
         </p>
       </div>
 
-        <Footer/>
-  
+      <Footer />
     </div>
   );
 };

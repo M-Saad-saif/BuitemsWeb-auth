@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import buitemsLogo from "./images/buitems logo.png";
 
-export default function Login() {
+export default function Login({ setProgress }) {
   const navigate = useNavigate();
-  const [loggin, setLoggin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [credential, setCredential] = useState({
@@ -18,6 +17,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setProgress(30);
 
     try {
       const { Email, CMS } = credential;
@@ -31,12 +31,10 @@ export default function Login() {
 
       const json = await response.json();
       if (json.success) {
-        setLoggin(true);
         localStorage.setItem("token", json.token);
 
-        setTimeout(() => {
-          navigate("/portal");
-        }, 1500);
+        navigate("/portal");
+        setProgress(90);
       } else {
         setError(json.error || "failed to login");
       }
@@ -46,25 +44,18 @@ export default function Login() {
     } finally {
       setLoading(false);
     }
+    setProgress(100);
   };
 
   const onChange = (e) => {
     setCredential({ ...credential, [e.target.name]: e.target.value });
   };
 
-  if (loggin === true) {
-    return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <h3 className="loading-text">Logging in ... Please Wait</h3>
-      </div>
-    );
-  }
 
   return (
     <>
       <title>BUITEMS Portal - Login</title>
-      <div className="split-form " style={{ marginTop: "9rem" }}>
+      <div className="split-form "  id="Logincomponent" >
         <div className="image-side">
           <img src={buitemsLogo} alt="" />
           <h2>Welcome Back!</h2>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import buitemsLogo from "./images/buitems logo.png";
 
-export default function Signup() {
+export default function Signup({setProgress}) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -68,7 +68,7 @@ export default function Signup() {
     }
 
     setLoading(true);
-
+    setProgress(30)
     try {
       const response = await fetch(`${HOST_URL}/api/auth/createuser`, {
         method: "POST",
@@ -105,6 +105,7 @@ export default function Signup() {
       } else {
         setError(json.error || "Failed to create account");
         setLoading(false);
+        setProgress(0)
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -112,7 +113,11 @@ export default function Signup() {
         "Signup failed. Please check your internet connection and try again.",
       );
       setLoading(false);
+        setProgress(0)
+
     }
+    setProgress(100)
+
   };
 
   const onChange = (e) => {
