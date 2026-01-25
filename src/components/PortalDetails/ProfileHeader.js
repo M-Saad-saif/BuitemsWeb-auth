@@ -1,5 +1,6 @@
 import React from "react";
 import "./userPortal.css";
+import { InfinitySpin } from "react-loader-spinner";
 
 const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
   const ClickHandleLogout = () => {
@@ -16,8 +17,10 @@ const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
   if (profileLoading) {
     return (
       <div className="profile-header profile-header-loading">
-        <div className="spinner"></div>
-        <p className="loading-text">Loading profile...</p>
+        <div className="text-center">
+          <InfinitySpin width="200" color="#4d6aa9" />
+          <h6>Loading profile...</h6>
+        </div>
       </div>
     );
   }
@@ -28,10 +31,10 @@ const ProfileHeader = ({ user, profileLoading, HandleLogout }) => {
         <div className="profile-avatar-container">
           <img
             src={
-              user?.profileImage ||
+              user.profileImage ||
               "https://cdn-icons-png.flaticon.com/512/149/149071.png"
             }
-            alt={user?.Fullname || "User"}
+            alt={user.Fullname || "User"}
             className="profile-avatar"
             onError={(e) => {
               e.target.onerror = null;

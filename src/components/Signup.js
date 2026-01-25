@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import buitemsLogo from "./images/buitems logo.png";
-
-export default function Signup({setProgress}) {
+import { InfinitySpin } from "react-loader-spinner";
+export default function Signup({ setProgress }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -68,7 +68,7 @@ export default function Signup({setProgress}) {
     }
 
     setLoading(true);
-    setProgress(30)
+    setProgress(30);
     try {
       const response = await fetch(`${HOST_URL}/api/auth/createuser`, {
         method: "POST",
@@ -105,7 +105,7 @@ export default function Signup({setProgress}) {
       } else {
         setError(json.error || "Failed to create account");
         setLoading(false);
-        setProgress(0)
+        setProgress(0);
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -113,11 +113,9 @@ export default function Signup({setProgress}) {
         "Signup failed. Please check your internet connection and try again.",
       );
       setLoading(false);
-        setProgress(0)
-
+      setProgress(0);
     }
-    setProgress(100)
-
+    setProgress(100);
   };
 
   const onChange = (e) => {
@@ -127,9 +125,9 @@ export default function Signup({setProgress}) {
 
   if (error.startsWith("success:")) {
     return (
-      <div className="loading-container">
-        <div className="spinner"></div>
-        <h3 className="loading-text">{error.replace("success: ", "")}</h3>
+      <div className="InfinitySpin-container text-center ">
+        <InfinitySpin width="200" color="#4d6aa9" />
+        <h6>{error.replace("success: ", "")}</h6>
       </div>
     );
   }
@@ -200,6 +198,13 @@ export default function Signup({setProgress}) {
                 {error.startsWith("success:")
                   ? error.replace("success: ", "")
                   : error}
+              </div>
+            )}
+
+            {loading && (
+              <div className=" text-center">
+                <InfinitySpin width="200" color="#4d6aa9" />
+                <h6>Waking up the server ... Please Wait</h6>
               </div>
             )}
 

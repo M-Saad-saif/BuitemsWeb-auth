@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { InfinitySpin } from "react-loader-spinner";
 import ProfileHeader from "./PortalDetails/ProfileHeader";
 import ProfileTab from "./PortalDetails/ProfileTab";
 import SemesterRecordsTab from "./PortalDetails/SemesterRecordsTab ";
@@ -392,9 +392,9 @@ const UserPortal = (props) => {
     return (
       <>
         <title>BUITEMS - Portal</title>;
-        <div className="loading-container">
-          <div className="spinner"></div>
-          <h3 className="loading-text">Logging OUT please wait</h3>
+        <div className="InfinitySpin-container text-center">
+          <InfinitySpin width="200" color="#4d6aa9" />
+          <h6>Logging OUT please wait</h6>
         </div>
       </>
     );
@@ -405,9 +405,9 @@ const UserPortal = (props) => {
     return (
       <>
         <title>BUITEMS - Portal</title>;
-        <div className="loading-container">
-          <div className="spinner"></div>
-          <h3 className="loading-text">Loading User Portal...</h3>
+        <div className=" InfinitySpin-container text-center">
+          <InfinitySpin width="200" color="#4d6aa9" />
+          <h6>Loading User Portal....</h6>
         </div>
       </>
     );

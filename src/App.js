@@ -39,7 +39,7 @@ function App() {
       <Router>
         <ScrollUP />
         <LoadingBar
-          color="#ffffff"
+          color="#ffe600"
           progress={progress}
           onLoaderFinished={() => setProgress(0)}
         />

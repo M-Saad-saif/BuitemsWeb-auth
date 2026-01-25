@@ -14,9 +14,9 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   };
 
-  const toggleToolDropdown =()=>{
-    setIsToolopen(!isToolsOpen)
-  }
+  const toggleToolDropdown = () => {
+    setIsToolopen(!isToolsOpen);
+  };
 
   return (
     <>
@@ -69,42 +69,27 @@ export default function Navbar() {
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="/AggregateCalculator">
-                      <small>
-                        <i className="ri-asterisk"></i>
-                      </small>
-                      Aggregate Calculator
+                      <span style={{color:"#ffd700 " }}>➤</span> Aggregate Calculator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/GPAcalculator">
-                      <small>
-                        <i className="ri-asterisk"></i>
-                      </small>
-                      GPA Calculator
+                       <span style={{color:"#ffd700" }}>➤</span> GPA Calculator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/CGPACalculator">
-                      <small>
-                        <i className="ri-asterisk"></i>
-                      </small>
-                      CGPA Calculator
+                       <span style={{color:"#ffd700" }}>➤</span> CGPA Calculator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/TimeTable">
-                      <small>
-                        <i className="ri-asterisk"></i>
-                      </small>
-                      Timetable Generator
+                      <span style={{color:"#ffd700 "}}>➤</span> Timetable Generator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/FrontPages">
-                      <small>
-                        <i className="ri-asterisk"></i>
-                      </small>
-                      Front Pages
+                       <span style={{color:"#ffd700 " }}>➤</span> Front Pages
                     </Link>
                   </li>
                   <li>
@@ -112,10 +97,7 @@ export default function Navbar() {
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/FacultiesDepartments">
-                      <small>
-                        <i className="ri-asterisk"></i>
-                      </small>
-                      Faculties & Departments
+                      <span style={{color:"#ffd700 ",}}>➤</span> Faculties & Departments
                     </Link>
                   </li>
                 </ul>
@@ -128,7 +110,9 @@ export default function Navbar() {
                 target="_blank"
                 className="mx-2"
               >
-                <button>GitHub <i className="ri-github-fill"></i></button>
+                <button>
+                  GitHub <i className="ri-github-fill"></i>
+                </button>
               </Link>
 
               {!localStorage.getItem("token") ? (
@@ -196,7 +180,6 @@ export default function Navbar() {
                   to="/"
                   onClick={closeMobileMenu}
                 >
-                  <i className="ri-home-line"></i>
                   Home
                 </Link>
               </li>
@@ -213,19 +196,26 @@ export default function Navbar() {
               </li>
 
               <li className="mobile-nav-item mobile-nav-dropdown">
-                <div className="mobile-nav-dropdown-header" onClick={toggleToolDropdown}>
+                <div
+                  className="mobile-nav-dropdown-header"
+                  onClick={toggleToolDropdown}
+                >
                   <i className="ri-tools-line"></i>
                   <span>Tools</span>
-                  <i className={`ri-arrow-down-s-line dropdown-arrow ${isToolsOpen ? 'rotate-180' : ''}`} ></i>
+                  <i
+                    className={`ri-arrow-down-s-line dropdown-arrow ${isToolsOpen ? "rotate-180" : ""}`}
+                  ></i>
                 </div>
-                <ul className={`mobile-nav-dropdown-menu ${isToolsOpen ? 'show' : 'hide'}`}>
+                <ul
+                  className={`mobile-nav-dropdown-menu ${isToolsOpen ? "show" : "hide"}`}
+                >
                   <li>
                     <Link
                       className="mobile-dropdown-item"
                       to="/AggregateCalculator"
                       onClick={closeMobileMenu}
                     >
-                      <i className="ri-calculator-line"></i>
+                       <span style={{color:"#ffd700 "}}>➤</span>
                       Aggregate Calculator
                     </Link>
                   </li>
@@ -235,7 +225,7 @@ export default function Navbar() {
                       to="/GPAcalculator"
                       onClick={closeMobileMenu}
                     >
-                      <i className="ri-calculator-line"></i>
+                      <span style={{color:"#ffd700 "}}>➤</span>
                       GPA Calculator
                     </Link>
                   </li>
@@ -245,7 +235,7 @@ export default function Navbar() {
                       to="/CGPACalculator"
                       onClick={closeMobileMenu}
                     >
-                      <i className="ri-calculator-line"></i>
+                      <span style={{color:"#ffd700 ", fontSize:"19px"}}>➤</span>
                       CGPA Calculator
                     </Link>
                   </li>
@@ -255,7 +245,7 @@ export default function Navbar() {
                       to="/TimeTable"
                       onClick={closeMobileMenu}
                     >
-                      <i className="ri-calendar-line"></i>
+                      <span style={{color:"#ffd700 "}}>➤</span>
                       Timetable Generator
                     </Link>
                   </li>
@@ -264,8 +254,7 @@ export default function Navbar() {
                       className="mobile-dropdown-item"
                       to="/FrontPages"
                       onClick={closeMobileMenu}
-                    >
-                      <i className="ri-file-line"></i>
+                    > <span style={{color:"#ffd700 "}}>➤</span>
                       Front Pages
                     </Link>
                   </li>
@@ -276,13 +265,43 @@ export default function Navbar() {
                       to="/FacultiesDepartments"
                       onClick={closeMobileMenu}
                     >
-                      <i className="ri-building-line"></i>
+          <span style={{color:"#ffd700 "}}>➤</span>
                       Faculties & Departments
                     </Link>
                   </li>
                 </ul>
               </li>
             </ul>
+            <div className="Mob-navbar-footer-btn">
+              <Link
+                to="https://github.com/M-Saad-saif"
+                target="_blank"
+                className="mx-2"
+              >
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style={{ background: "#0a4da1" }}
+                >
+                  Github <i class="ri-github-fill"></i>
+                </button>
+              </Link>
+
+              {!localStorage.getItem("token") ? (
+                ""
+              ) : (
+                <Link to="/portal">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    style={{ background: "#0a4da1" }}
+                    onClick={closeMobileMenu}
+                  >
+                    Portal <i className="fa-solid fa-graduation-cap "></i>
+                  </button>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>

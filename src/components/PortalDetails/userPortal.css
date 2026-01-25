@@ -266,17 +266,18 @@
 
 @media (max-width: 600px) {
     .tab-btn {
-        flex-direction: column;
+                /* flex-direction: column; */
         gap: 4px;
         border: 0.1px solid;
+        justify-content: space-between;
     }
 
     .tab-label {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .tab-icon {
-        font-size: 16px;
+        font-size: 18px;
     }
 
 }
@@ -2678,5 +2679,10 @@
 
     .preview-image {
         max-height: 120px;
+    }
+
+    .dialog-container {
+        max-height: 77vh;
+        width: 99%;
     }
 }

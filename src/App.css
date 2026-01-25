@@ -13,6 +13,11 @@ body {
 /* ===========================================
    COMMON BACKGROUND STYLES
    =========================================== */
+
+.InfinitySpin-container {
+  margin-top: 12rem;
+}
+
 .container::before,
 .agg-container::before,
 .gpa-container::before,
@@ -2488,12 +2493,18 @@ table {
 
 .mobile-nav-dropdown-menu.show {
   max-height: 500px;
-  /* Adjust based on your content */
   transition: max-height 0.3s ease-in;
 }
 
 .mobile-nav-dropdown-menu.hide {
   max-height: 0;
+}
+
+.Mob-navbar-footer-btn {
+  padding: 11px 8px;
+  bottom: -2rem;
+  position: relative;
+      justify-self: anchor-center;
 }
 
 /* Mobile Menu Overlay */
@@ -2520,17 +2531,19 @@ table {
 /* Mobile Menu Sidebar */
 .mobile-menu-sidebar {
   position: fixed;
-  top: 0;
+  top: 15px;
   right: -100%;
+  margin-right: 25px;
   width: 85%;
   max-width: 350px;
-  height: 100vh;
+  height: 92vh;
   background: white;
   z-index: 1000;
   transition: right 0.3s ease;
   display: flex;
   flex-direction: column;
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
 }
 
 .mobile-menu-sidebar.active {
@@ -2544,6 +2557,8 @@ table {
   justify-content: space-between;
   align-items: center;
   color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .mobile-menu-header h3 {

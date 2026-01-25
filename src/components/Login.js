@@ -103,7 +103,7 @@ export default function Login({ setProgress }) {
             )}
 
             {loading && (
-              <div className="text-center">
+              <div className=" text-center">
                 <InfinitySpin width="200" color="#4d6aa9" />
                 <h6>Waking up the server ... Please Wait</h6>
               </div>
