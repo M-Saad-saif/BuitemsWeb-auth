@@ -1,70 +1,205 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BuitemsWeb-auth 🎓
 
-## Available Scripts
+A **student-focused web platform** providing essential academic tools such as a **secure student portal**, **GPA/CGPA calculator**, and **assignment front-page generator** — all in one place.
 
-In the project directory, you can run:
+Designed to help students **manage academic records safely** and **simplify everyday university tasks**.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌐 Live Project
+👉 https://buitemsweb-auth.vercel.app  
+*(Update link if different)*
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📌 Key Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔐 Student Portal (Core Feature)
+- Secure user registration & login
+- Personal academic data storage
+- Save and manage academic records safely
+- Token-based authentication
+- Protected user routes
 
-### `npm run build`
+### 🧮 GPA / CGPA Calculator
+- Calculate semester GPA
+- Calculate cumulative CGPA
+- Quick, accurate, and student-friendly
+- Ideal for result planning and performance tracking
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 📄 Assignment Front-Page Generator
+- Auto-generate professional assignment front pages
+- Reduces formatting effort for students
+- Clean and academic-standard layout
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠 Tech Stack
 
-### `npm run eject`
+| Layer        | Technology |
+|--------------|------------|
+| Frontend     | React, JavaScript |
+| Backend      | Node.js, Express |
+| Database     | MongoDB (Mongoose) |
+| Authentication | JWT (Token-based) |
+| File Handling | Multer / Cloudinary |
+| Deployment   | Vercel and Render|
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+BuitemsWeb-auth/
+├── src/ (41400 tokens)
+    ├── index.css
+    ├── components/ (40500 tokens)
+    │   ├── images/ (700 tokens)
+    │   │   ├── pic.jfif
+    │   │   ├── ass pg 1.png
+    │   │   ├── ass pg 2.png
+    │   │   ├── ass pg 3.png
+    │   │   ├── ass pg 4.png
+    │   │   ├── buitems logo.png
+    │   │   └── backgrond for laptop.png
+    │   ├── Footer.js (300 tokens)
+    │   ├── PortalDetails/ (9100 tokens)
+    │   │   ├── GPACalculatorTab.js (800 tokens)
+    │   │   ├── ProfileHeader.js (800 tokens)
+    │   │   ├── ProfileTab.js (900 tokens)
+    │   │   ├── AddSemesterDialog.js (1400 tokens)
+    │   │   ├── SemesterRecordsTab .js (1400 tokens)
+    │   │   ├── EditProfileDialog.js (1500 tokens)
+    │   │   └── GPAAnalysisTab.js (2300 tokens)
+    │   ├── FrontPages.js (800 tokens)
+    │   ├── Login.js (900 tokens)
+    │   ├── AggregateCal.js (1000 tokens)
+    │   ├── TimeTable.js (1500 tokens)
+    │   ├── Signup.js (1500 tokens)
+    │   ├── About.js (1600 tokens)
+    │   ├── CGPAcal.js (1600 tokens)
+    │   ├── GPAcal.js (1700 tokens)
+    │   ├── Home.js (2000 tokens)
+    │   ├── Navbar.js (2500 tokens)
+    │   ├── GenerateFP.js (2600 tokens)
+    │   ├── PortalOFuser.js (3800 tokens)
+    │   └── FacAndDept.js (8900 tokens)
+    ├── App.test.js
+    ├── reportWebVitals.js
+    ├── index.js
+    └── App.js (600 tokens)
+├── public/ (600 tokens)
+    ├── robots.txt
+    ├── BUITEMS tab logo.ico
+    ├── manifest.json
+    └── index.html (300 tokens)
+├── desktop.ini
+├── backend/ (5800 tokens)
+    ├── utils/ (200 tokens)
+    │   ├── cloudinary.js
+    │   └── multerconfig.js
+    ├── middleware/ (200 tokens)
+    │   └── fetchuser.js (200 tokens)
+    ├── DB.js (200 tokens)
+    ├── package.json (200 tokens)
+    ├── index.js (200 tokens)
+    ├── models/ (900 tokens)
+    │   └── UserModel.js (900 tokens)
+    └── routes/ (3900 tokens)
+    │   └── userauth.js (3900 tokens)
+├── .gitignore
+├── vercel.json (200 tokens)
+├── package.json (300 tokens)
+└── README.md (800 tokens)
 
-## Learn More
+````
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ⚙️ Installation & Setup
 
-### Code Splitting
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/M-Saad-saif/BuitemsWeb-auth.git
+cd BuitemsWeb-auth
+````
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### 2️⃣ Backend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+cd backend
+npm install
+```
 
-### Making a Progressive Web App
+Create a `.env` file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_jwt_secret
+```
 
-### Advanced Configuration
+Run backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm run dev
+```
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 3️⃣ Frontend Setup
 
-### `npm run build` fails to minify
+```bash
+cd ..
+npm install
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Frontend runs at:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🔗 Sample API Endpoints
+
+```
+POST   /api/auth/createuser    → Register student
+POST   /api/auth/login       → Login student
+GET    /api/auth/profile     → Fetch student data (Protected)
+```
+
+---
+
+## 🔐 Security & Best Practices
+
+✔ JWT-based authentication
+✔ Environment variables for sensitive data
+✔ Modular & scalable folder structure
+✔ `.gitignore` for security
+
+---
+
+## 🎯 Use Cases
+
+* University students managing academic records
+* GPA/CGPA calculation before result submission
+* Quick generation of assignment front pages
+* Learning full-stack authentication systems
+
+---
+
+## 👨‍💻 Author
+
+**Saad Saif**
+Computer Science Student | MERN Stack Developer
+
+GitHub: [https://github.com/M-Saad-saif](https://github.com/M-Saad-saif)
+
+---
