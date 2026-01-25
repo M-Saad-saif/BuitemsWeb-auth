@@ -25,7 +25,7 @@ const SemesterRecordsTab = ({
     if (["B+", "B", "B-"].includes(grade)) return "grade-b";
     if (["C+", "C", "C-"].includes(grade)) return "grade-c";
     if (["D", "F"].includes(grade)) return "grade-df";
-    return "grade-df";
+    return "grade-df";  
   };
 
   if (recordsLoading) {

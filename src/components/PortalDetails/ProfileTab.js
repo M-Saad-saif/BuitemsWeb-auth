@@ -2,6 +2,13 @@ import React from "react";
 import "./userPortal.css";
 
 const ProfileTab = ({ user, semesterRecords, onEditProfile }) => {
+  const capitalizeFirstLetter = (str) => {
+    if (typeof str !== "string" || str.length === 0) {
+      return ""; // Handles empty strings or non-string input
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <>
       <title>BUITEMS - Portal | Profile</title>
@@ -26,21 +33,21 @@ const ProfileTab = ({ user, semesterRecords, onEditProfile }) => {
               <div className="detail-item">
                 <span className="detail-label">Full Name</span>
                 <span className="detail-value">
-                  {user?.Fullname || "Not set"}
+                  {capitalizeFirstLetter(user.Fullname) || "Not set"}
                 </span>
               </div>
               <div className="detail-item">
                 <span className="detail-label">Email</span>
-                <span className="detail-value">{user?.Email || "Not set"}</span>
+                <span className="detail-value">{user.Email || "Not set"}</span>
               </div>
               <div className="detail-item">
                 <span className="detail-label">CMS ID</span>
-                <span className="detail-value">{user?.CMS || "Not set"}</span>
+                <span className="detail-value">{user.CMS || "Not set"}</span>
               </div>
               <div className="detail-item">
                 <span className="detail-label">Department</span>
                 <span className="detail-value">
-                  {user?.department || "Not set"}
+                  {capitalizeFirstLetter(user.department) || "Not set"}
                 </span>
               </div>
             </div>
@@ -56,18 +63,18 @@ const ProfileTab = ({ user, semesterRecords, onEditProfile }) => {
             <div className="details-list">
               <div className="detail-item">
                 <span className="detail-label">Current Semester</span>
-                <span className="detail-value">{user?.Semester || "N/A"}</span>
+                <span className="detail-value">{user.Semester || "N/A"}</span>
               </div>
               <div className="detail-item">
                 <span className="detail-label">Current CGPA</span>
                 <span className="detail-value highlight">
-                  {parseFloat(user?.currentCGPA || 0).toFixed(2)}
+                  {parseFloat(user.currentCGPA || 0).toFixed(2)}
                 </span>
               </div>
               <div className="detail-item">
                 <span className="detail-label">Total Credit Hours</span>
                 <span className="detail-value">
-                  {user?.totalCreditHoursCompleted || 0}
+                  {user.totalCreditHoursCompleted || 0}
                 </span>
               </div>
               <div className="detail-item">
