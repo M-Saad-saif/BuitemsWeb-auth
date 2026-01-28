@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { InfinitySpin } from "react-loader-spinner";
 
 export default function AIchat() {
@@ -11,8 +11,7 @@ export default function AIchat() {
   const [showHistory, setShowHistory] = useState(false);
   const typingSpeed = 0.2;
 
-const HOST_API = process.env.REACT_APP_BACKEND_UR || 'http://localhost:5000'
-
+  const HOST_API = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
   // Load history from localStorage on component mount
   const [history, setHistory] = useState(() => {
@@ -64,16 +63,13 @@ const HOST_API = process.env.REACT_APP_BACKEND_UR || 'http://localhost:5000'
       setFullResponse("");
       setDisplayedResponse("");
 
-      const apiResponse = await fetch(
-        `${HOST_API}/api/ai/generate-text`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text }),
+      const apiResponse = await fetch(`${HOST_API}/api/ai/generate-text`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({ text }),
+      });
 
       const json = await apiResponse.json();
 
@@ -139,7 +135,7 @@ const HOST_API = process.env.REACT_APP_BACKEND_UR || 'http://localhost:5000'
   };
 
   return (
-    <section className="Aichat-container" >
+    <section className="Aichat-container">
       {/* Mobile History Toggle Button */}
       <button
         className="mobile-history-toggle"
@@ -248,9 +244,11 @@ const HOST_API = process.env.REACT_APP_BACKEND_UR || 'http://localhost:5000'
                       onClick={() => setResponseFromHistory(item.response)}
                       title="Click to view full response"
                       style={{ justifySelf: "center" }}
-                      
                     >
-                      <button className="view-response-btn my-2" onClick={toggleHistory}>
+                      <button
+                        className="view-response-btn my-2"
+                        onClick={toggleHistory}
+                      >
                         View full response
                       </button>
                     </div>
