@@ -20,6 +20,7 @@ import About from "./components/About";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import UserPortal from "./components/PortalOFuser";
+import AIchat from "./components/AIchat";
 
 function App() {
   const ScrollUP = () => {
@@ -47,9 +48,22 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/signup" element={<Signup setProgress={setProgress}/>} />
-          <Route exact path="/login" element={<Login setProgress={setProgress}/>} />
-          <Route exact path="/portal" element={<UserPortal  setProgress={setProgress}/>} />
+          <Route exact path="/aichat" element={<AIchat />} />
+          <Route
+            exact
+            path="/signup"
+            element={<Signup setProgress={setProgress} />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={<Login setProgress={setProgress} />}
+          />
+          <Route
+            exact
+            path="/portal"
+            element={<UserPortal setProgress={setProgress} />}
+          />
           <Route
             exact
             path="/AggregateCalculator"

@@ -20,6 +20,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/userauth"));
+app.use("/api/ai", require("./routes/aiconfig"));
 
 // cheaking health
 app.get("/health", (req, res) => {

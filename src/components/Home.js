@@ -50,17 +50,26 @@ const Home = () => {
 
       {/* Main Content */}
       <main className="home-main-container">
+        {/* AI chat container */}
+        <div className="feature-card">
+          <div className="iconHeading-container">
+            <i className="ri-ai-generate-2 home-card-icon mx-2"></i>
+            <h3 className="card-title">AI Assisstant</h3>
+          </div>
+          <p className="card-description">
+            Get detailed, easy-to-understand theoretical answers to your
+            specific questions and doubts.
+          </p>
+          <Link to="/aichat">
+            <button className="card-action-btn">
+               Start Asking  <i className="ri-arrow-right-line"></i>
+            </button>
+          </Link>
+        </div>
+
         {/* Aggregate Calculator */}
         <div className="feature-card">
-          <div
-            className="iconHeading-container"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   marginTop: "2rem",
-            //   flexWrap: "wrap",
-            // }}
-          >
+          <div className="iconHeading-container">
             <i className="ri-calculator-line home-card-icon"></i>
             <h3 className="card-title">Aggregate Calculator</h3>
           </div>
@@ -77,15 +86,7 @@ const Home = () => {
 
         {/* GPA Calculator */}
         <div className="feature-card">
-          <div
-            className="iconHeading-container"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   marginTop: "2rem",
-            //   flexWrap: "wrap",
-            // }}
-          >
+          <div className="iconHeading-container">
             <i className="ri-line-chart-line home-card-icon"></i>
             <h3 className="card-title">GPA Calculator</h3>
           </div>
@@ -127,15 +128,7 @@ const Home = () => {
 
         {/* Timetable Generator */}
         <div className="feature-card">
-          <div
-            className="iconHeading-container"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   marginTop: "2rem",
-            //   flexWrap: "wrap",
-            // }}
-          >
+          <div className="iconHeading-container">
             <i className="ri-calendar-line home-card-icon"></i>
             <h3 className="card-title">Timetable Generator</h3>
           </div>
@@ -152,15 +145,7 @@ const Home = () => {
 
         {/* Front Page Designs */}
         <div className="feature-card">
-          <div
-            className="iconHeading-container"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   marginTop: "2rem",
-            //   flexWrap: "wrap",
-            // }}
-          >
+          <div className="iconHeading-container">
             <i className="ri-file-text-line home-card-icon"></i>
             <h3 className="card-title">Front Page Designs</h3>
           </div>
@@ -176,16 +161,8 @@ const Home = () => {
         </div>
 
         {/* Faculties & Departments */}
-        <div className="feature-card">
-          <div
-            className="iconHeading-container"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            //   marginTop: "2rem",
-            //   flexWrap: "wrap",
-            // }}
-          >
+        <div className="feature-card" id="Facu-and-Dep-card">
+          <div className="iconHeading-container">
             <i className="ri-building-line home-card-icon"></i>
             <h3 className="card-title">Faculties & Departments</h3>
           </div>
@@ -221,17 +198,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div
-        className="intro-div"
-        // style={{
-        //   color: "white",
-        //   fontSize: "22px",
-        //   marginBottom: "-10px",
-        //   borderRadius: "18px",
-        //   padding: " 9px 36px",
-        //   background: "linear-gradient(135deg, #021935, #043065)",
-        // }}
-      >
+      <div className="intro-div">
         <p style={{ alignItems: "anchor-center", marginBottom: "0" }}>
           Muhammad Saad Saif | Computer Science | 4th semester{" "}
         </p>

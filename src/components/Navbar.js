@@ -68,28 +68,36 @@ export default function Navbar() {
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
+                    <Link className="dropdown-item" to="/aichat">
+                      <span style={{ color: "#ffd700 " }}>➤</span> AI Assisstant
+                    </Link>
+                  </li>
+                  <li>
                     <Link className="dropdown-item" to="/AggregateCalculator">
-                      <span style={{color:"#ffd700 " }}>➤</span> Aggregate Calculator
+                      <span style={{ color: "#ffd700 " }}>➤</span> Aggregate
+                      Calculator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/GPAcalculator">
-                       <span style={{color:"#ffd700" }}>➤</span> GPA Calculator
+                      <span style={{ color: "#ffd700" }}>➤</span> GPA Calculator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/CGPACalculator">
-                       <span style={{color:"#ffd700" }}>➤</span> CGPA Calculator
+                      <span style={{ color: "#ffd700" }}>➤</span> CGPA
+                      Calculator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/TimeTable">
-                      <span style={{color:"#ffd700 "}}>➤</span> Timetable Generator
+                      <span style={{ color: "#ffd700 " }}>➤</span> Timetable
+                      Generator
                     </Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/FrontPages">
-                       <span style={{color:"#ffd700 " }}>➤</span> Front Pages
+                      <span style={{ color: "#ffd700 " }}>➤</span> Front Pages
                     </Link>
                   </li>
                   <li>
@@ -97,7 +105,8 @@ export default function Navbar() {
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/FacultiesDepartments">
-                      <span style={{color:"#ffd700 ",}}>➤</span> Faculties & Departments
+                      <span style={{ color: "#ffd700 " }}>➤</span> Faculties &
+                      Departments
                     </Link>
                   </li>
                 </ul>
@@ -210,12 +219,17 @@ export default function Navbar() {
                   className={`mobile-nav-dropdown-menu ${isToolsOpen ? "show" : "hide"}`}
                 >
                   <li>
+                    <Link className="mobile-dropdown-item" to="/aichat" onClick={closeMobileMenu}>
+                      <span style={{ color: "#ffd700 " }}>➤</span> AI Assisstant
+                    </Link>
+                  </li>
+                  <li>
                     <Link
                       className="mobile-dropdown-item"
                       to="/AggregateCalculator"
                       onClick={closeMobileMenu}
                     >
-                       <span style={{color:"#ffd700 "}}>➤</span>
+                      <span style={{ color: "#ffd700 " }}>➤</span>
                       Aggregate Calculator
                     </Link>
                   </li>
@@ -225,7 +239,7 @@ export default function Navbar() {
                       to="/GPAcalculator"
                       onClick={closeMobileMenu}
                     >
-                      <span style={{color:"#ffd700 "}}>➤</span>
+                      <span style={{ color: "#ffd700 " }}>➤</span>
                       GPA Calculator
                     </Link>
                   </li>
@@ -235,7 +249,9 @@ export default function Navbar() {
                       to="/CGPACalculator"
                       onClick={closeMobileMenu}
                     >
-                      <span style={{color:"#ffd700 ", fontSize:"19px"}}>➤</span>
+                      <span style={{ color: "#ffd700 ", fontSize: "19px" }}>
+                        ➤
+                      </span>
                       CGPA Calculator
                     </Link>
                   </li>
@@ -245,7 +261,7 @@ export default function Navbar() {
                       to="/TimeTable"
                       onClick={closeMobileMenu}
                     >
-                      <span style={{color:"#ffd700 "}}>➤</span>
+                      <span style={{ color: "#ffd700 " }}>➤</span>
                       Timetable Generator
                     </Link>
                   </li>
@@ -254,7 +270,9 @@ export default function Navbar() {
                       className="mobile-dropdown-item"
                       to="/FrontPages"
                       onClick={closeMobileMenu}
-                    > <span style={{color:"#ffd700 "}}>➤</span>
+                    >
+                      {" "}
+                      <span style={{ color: "#ffd700 " }}>➤</span>
                       Front Pages
                     </Link>
                   </li>
@@ -265,7 +283,7 @@ export default function Navbar() {
                       to="/FacultiesDepartments"
                       onClick={closeMobileMenu}
                     >
-          <span style={{color:"#ffd700 "}}>➤</span>
+                      <span style={{ color: "#ffd700 " }}>➤</span>
                       Faculties & Departments
                     </Link>
                   </li>
@@ -280,10 +298,10 @@ export default function Navbar() {
               >
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   style={{ background: "#0a4da1" }}
                 >
-                  Github <i class="ri-github-fill"></i>
+                  Github <i className="ri-github-fill"></i>
                 </button>
               </Link>
 
@@ -293,7 +311,7 @@ export default function Navbar() {
                 <Link to="/portal">
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     style={{ background: "#0a4da1" }}
                     onClick={closeMobileMenu}
                   >
