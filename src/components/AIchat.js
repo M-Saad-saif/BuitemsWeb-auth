@@ -11,6 +11,9 @@ export default function AIchat() {
   const [showHistory, setShowHistory] = useState(false);
   const typingSpeed = 0.2;
 
+const HOST_API = process.env.REACT_APP_BACKEND_UR || 'http://localhost:5000'
+
+
   // Load history from localStorage on component mount
   const [history, setHistory] = useState(() => {
     const savedHistory = localStorage.getItem("aiChatHistory");
@@ -62,7 +65,7 @@ export default function AIchat() {
       setDisplayedResponse("");
 
       const apiResponse = await fetch(
-        "http://localhost:5000/api/ai/generate-text",
+        `${HOST_API}/api/ai/generate-text`,
         {
           method: "POST",
           headers: {
