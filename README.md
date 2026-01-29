@@ -32,6 +32,9 @@ Designed to help students **manage academic records safely** and **simplify ever
 - Reduces formatting effort for students
 - Clean and academic-standard layout
 
+### 🖥AI integrated
+- Search for your queries regarding studies
+
 ---
 
 ## 🛠 Tech Stack
