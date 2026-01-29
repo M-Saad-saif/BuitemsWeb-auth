@@ -181,20 +181,20 @@ const Home = () => {
       {/* Stats Section */}
       <div className="home-stats">
         <div className="stat-item">
-          <span className="stat-number">6+</span>
+          <span className="stat-number">7+</span>
           <span className="stat-label text-white">Tools Available</span>
         </div>
         <div className="stat-item">
-          <span className="stat-number">100%</span>
-          <span className="stat-label text-white">Free to Use</span>
+          <span className="stat-number"><i class="ri-ai"></i></span>
+          <span className="stat-label text-white">AI integrated</span>
         </div>
         <div className="stat-item">
           <span className="stat-number">24/7</span>
           <span className="stat-label text-white">Available</span>
         </div>
         <div className="stat-item">
-          <span className="stat-number">PDF</span>
-          <span className="stat-label text-white">Export Support</span>
+          <span className="stat-number">Secure</span>
+          <span className="stat-label text-white">Secure your data</span>
         </div>
       </div>
 

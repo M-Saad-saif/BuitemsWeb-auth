@@ -35,7 +35,7 @@ const getPerformanceText = (grade) => {
 };
 
 const getGradeColor = (grade) => {
-  if (["A+", "A", "A-"].includes(grade)) return "grade-a";
+  if ([ "A", "A-"].includes(grade)) return "grade-a";
   if (["B+", "B", "B-"].includes(grade)) return "grade-b";
   if (["C+", "C", "C-"].includes(grade)) return "grade-c";
   return "grade-df";

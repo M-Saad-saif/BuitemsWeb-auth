@@ -119,7 +119,7 @@ const SemesterRecordsTab = ({
                       <tbody>
                         {semester.subjects.map((subject, idx) => (
                           <tr key={idx}>
-                            <td>{subject.name}</td>
+                            <td>{subject.name.toUpperCase()}</td>
                             <td className="text-right">
                               {subject.creditHours}
                             </td>
