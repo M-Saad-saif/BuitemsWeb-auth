@@ -2545,7 +2545,7 @@ table {
   max-width: 350px;
   height: 92vh;
   background: white;
-  z-index: 1000;
+  z-index: 55555551;
   transition: right 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -3613,7 +3613,8 @@ AI chat style
 /* Mobile History Toggle Button */
 .mobile-history-toggle {
   display: none;
-  position: fixed;
+  position: absolute;
+  width: 50%;
   bottom: 19%;
   /* top: 95px; */
   right: 20px;
@@ -3629,6 +3630,7 @@ AI chat style
   transition: all 0.3s ease;
   align-items: center;
   gap: 8px;
+  justify-content: center;
 }
 
 .mobile-history-toggle:hover {

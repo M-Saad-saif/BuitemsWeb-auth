@@ -62,7 +62,7 @@ const Home = () => {
           </p>
           <Link to="/aichat">
             <button className="card-action-btn">
-               Start Asking  <i className="ri-arrow-right-line"></i>
+              Start Asking <i className="ri-arrow-right-line"></i>
             </button>
           </Link>
         </div>
@@ -181,19 +181,68 @@ const Home = () => {
       {/* Stats Section */}
       <div className="home-stats">
         <div className="stat-item">
-          <span className="stat-number">7+</span>
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/12538/12538748.png"
+            alt=""
+            srcset=""
+            style={{
+              verticalAlign: "middle",
+              width: "60px",
+              display: "flex",
+              justifySelf: "center",
+              color: "yellow",
+              marginBottom: "8px",
+            }}
+          />
           <span className="stat-label text-white">Tools Available</span>
         </div>
         <div className="stat-item">
-          <span className="stat-number"><i class="ri-ai"></i></span>
+          <span className="stat-number">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/5845/5845492.png"
+              alt=""
+              style={{
+                verticalAlign: "middle",
+                width: "60px",
+                display: "flex",
+                justifySelf: "center",
+                color: "yellow",
+                marginBottom: "8px",
+              }}
+            />
+          </span>
           <span className="stat-label text-white">AI integrated</span>
         </div>
         <div className="stat-item">
-          <span className="stat-number">24/7</span>
-          <span className="stat-label text-white">Available</span>
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/8743/8743989.png"
+            alt=""
+            style={{
+              verticalAlign: "middle",
+              width: "60px",
+              display: "flex",
+              justifySelf: "center",
+              color: "yellow",
+              marginBottom: "8px",
+            }}
+          />
+
+          <span className="stat-label text-white"> Available</span>
         </div>
         <div className="stat-item">
-          <span className="stat-number">Secure</span>
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/2974/2974498.png"
+            alt=""
+            style={{
+              verticalAlign: "middle",
+              width: "55px",
+              display: "flex",
+              justifySelf: "center",
+              color: "yellow",
+              marginBottom: "8px",
+            }}
+          />
+
           <span className="stat-label text-white">Secure your data</span>
         </div>
       </div>
