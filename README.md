@@ -8,7 +8,7 @@ Designed to help students **manage academic records safely** and **simplify ever
 ---
 
 ## 🌐 Live Project
-👉 https://buitemsweb-auth.vercel.app  
+👉 https://buitemsweb-portal.vercel.app/  
 
 ---
 
