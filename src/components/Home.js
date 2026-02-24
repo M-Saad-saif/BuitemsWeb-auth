@@ -249,8 +249,25 @@ const Home = () => {
 
       <div className="intro-div">
         <p style={{ alignItems: "anchor-center", marginBottom: "0" }}>
-          Muhammad Saad Saif | Computer Science | 4th semester{" "}
+          Muhammad Saad Saif | Computer Science | 4th semester
         </p>
+
+        <div>
+          <p
+            className="text-center"
+            style={{ fontSize: "16px", marginTop: "8px", marginBottom: "7px" }}
+          >
+            Visit:
+            <Link
+              to="https://saadsaif.vercel.app"
+              target="_blank"
+              className="ms-1"
+              style={{ textDecoration: "none", color: "#a5e8ff" }}
+            >
+              <i className="ri-code-s-slash-line me-1"></i>Portfolio
+            </Link>
+          </p>
+        </div>
       </div>
 
       <Footer />

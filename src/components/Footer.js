@@ -34,6 +34,14 @@ export default function Footer() {
           >
             <i className="fa-brands fa-github"></i>Github
           </a>
+          <a
+            href="https://saadsaif.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-link"
+          >
+            <i className="ri-code-s-slash-line"></i>Portfolio
+          </a>
         </div>
       </footer>
     </div>
