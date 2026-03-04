@@ -1,27 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import { Helmet } from "react-helmet-async";
 
 const Home = () => {
+
   return (
     <>
-      <Helmet>
-        <title>M.Saad Saif | Developer</title>
-
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:url" content="https://buitemsweb-portal.vercel.app/" />
-        <meta property="og:title" content="M.Saad Saif | Developer" />
-        <meta
-          property="og:description"
-          content="Full Stack Developer crafting fast, scalable, and beautiful web applications."
-        />
-        <meta
-          property="og:image"
-          content="https://buitemsweb-portal.vercel.app/src/components/images/background for laptop.png"
-        />
-      </Helmet>
 
       <div className="home-container">
         {/* Header */}
